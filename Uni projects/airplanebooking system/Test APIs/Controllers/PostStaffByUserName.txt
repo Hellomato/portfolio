@@ -1,0 +1,16 @@
+        // POST: api/STAFF_ACCOUNT
+        [ResponseType(typeof(STAFF_ACCOUNT))]
+        public async Task<IHttpActionResult> PostSTAFF_ACCOUNT(string username)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            STAFF_ACCOUNT sTAFF_ACCOUNT = await db.STAFF_ACCOUNT.SqlQuery($"SELECT * FROM PRCS251J.STAFF_ACCOUNT WHERE USERNAME = '{username}'").FirstAsync();
+            if (sTAFF_ACCOUNT == null)
+            {
+                return NotFound();
+            }
+            return Ok();
+        }

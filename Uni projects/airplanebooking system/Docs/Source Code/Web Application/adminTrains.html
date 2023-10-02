@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Train Management System</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.0.0.css" rel="stylesheet">
+    <link href = "css/edit.css" rel="stylesheet">
+	<!-- JavaScript Files -->
+	<script src="js/Requests.js" type="text/javascript"></script>
+    <script src="js/adminTrains.js" type="text/javascript"></script>
+    <script src="js/cookiesLogin.js" type="text/javascript"></script>
+    <script src="js/Logout.js" type="text/javascript"></script>
+	<!-- CSS Style Sheets -->
+	<link href="css/TrainModalStyles.css" rel="stylesheet">
+      <!-- SweetAlert2 -->
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+  </head>
+  <body onload="checkCookieAdmin();initialise()">
+    <!-- Nav bar -->
+    <section>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="adminHomePage.html">Train Management System</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <!-- This is left hand side nav bar -->
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="adminHomePage.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="adminRoutes.html">Journeys</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="adminTrains.html">Trains</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="adminStations.html">Stations</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="adminAccounts.html">Accounts</a>
+            </li>
+          </ul>
+          <!-- End of left hand side nav bar -->
+          <!-- This is right hand side nav bar -->
+          <ul class="navbar-nav">
+
+            <li class="nav-item">
+              <a class="nav-link" id ="logout" data-toggle="modal" data-target="#LogoutModal" onclick="ClearModalShow()">Log out</a>
+            </li>
+          </ul>
+          <!-- End of  right side nav bar -->
+        </div>
+      </nav>
+
+    </section>
+    <!-- End of Nav bar -->
+  <!-- Logout modal -->
+  <div class="modal fade" id="LogoutModal" role="dialog" >
+    <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-top">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="text-center">Log out</h4>
+      </div>
+      <hr>
+      <div class="modal-body text-center">
+        Are you sure you want to logout?
+        <br>
+        <br>
+        <button type="submit" value="Submit" onclick="return Logout()" class="btn btn-block">
+          Logout
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-lg btn-danger mr-auto"  data-dismiss="modal">
+          Cancel
+        </button>
+      </div>
+    </div>
+    </div>
+  </div>
+  <!-- End of Logout modal -->
+
+  <!-- Unsuccessful Request Modal -->
+  <div id="unsuccessfulTrainModal" class="submitModal">
+
+	<!-- Modal content -->
+	<div class="unsuccessfulModalContent span text-center">
+		<span class="unsuccessfulModalClose close">&times;</span>
+		<h2 id="errorMessage">Request Unsuccessful! An error may have occured.</h2>
+		<p>Click outside of this box or on the 'X' to close</p>
+	</div>
+  </div>
+
+<!-- Submit Train Modal -->
+<div id="submitTrainModal" class="submitModal">
+
+  <!-- Modal content -->
+  <div class="submitModalContent span text-center">
+    <span class="submitModalClose close">&times;</span>
+    <h2>Train submission successful!</h2>
+	<p>Click outside of this box or on the 'X' to close</p>
+  </div>
+</div>
+
+  <!-- Delete Request Modal -->
+  <div id="deleteModal" class="deleteModal">
+
+	<!-- Modal content -->
+	<div class="deleteModalContent span text-center">
+		<span class="deleteModalClose close">&times;</span>
+		<h2>Train Deleted Successfully</h2>
+		<p>Click outside of this box or on the 'X' to close</p>
+	</div>
+  </div>
+
+  <!-- Update Request Modal -->
+  <div id="updateModal" class="updateModal">
+  <!-- Modal content -->
+  <div class="updateModalContent span text-center">
+      <span class="updateModalClose close">&times;</span>
+      <h2>Train Updated Successfully</h2>
+      <p>Click outside of this box or on the 'X' to close</p>
+  </div>
+  </div>
+
+  <!-- Title -->
+  <section id = "titleSections">
+    <div class="container">
+      <br>
+      <br>
+      <br>
+      <br>
+      <hr>
+      <h2 class = "text-center">Trains</h2>
+      <hr>
+      <br>
+      <br>
+    </section>
+  <!-- End of Title -->
+  <!-- Add new Train section -->
+  <section id = "addNewTrain">
+    <div class="container">
+      <h3>Add a new train</h3>
+      <div class="row">
+        <div class="col">
+          <div class="card border-secondary">
+            <div class="card-body ">
+              <form class="form">
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md">
+                      <label for="trainType">Set the train type</label>
+                      <select class="custom-select d-block" id="trainType" required>
+                        <option value="">Choose...</option>
+                        <option>Electric</option>
+                        <option>Diesel</option>
+                        <option>Steam</option>
+						<option>Transforming</option>
+                      </select>
+                    </div>
+                    <div class="col-md">
+                      <label for="noCarriages">Number of carriages</label>
+						<input class="custom-select" type="number" name="Carriages" id="carriageCount" min="1" max="15">
+                    </div>
+                  </div>
+              </form>
+            </div>
+              <div class="row">
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                </div>
+                <div class="col">
+                    <button class="btn btn-success btn-lg btn-block" type="submit" onclick="return submitTrain()" >Add</button>
+                </div>
+            </div>
+          </div>
+          <br>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End of Add new Train section -->
+<br>
+<br>
+<!-- remove Train section -->
+<section id = "removeTrain">
+  <div class="container">
+    <h3>Manage trains</h3>
+    <div class="row">
+      <div class="col">
+        <div class="card border-secondary">
+          <div class="card-body ">
+            <form class="form">
+              <div class="form-group">
+                <div class="row">
+				  <div class="col-md">
+                    <label for="searchBy">Search by</label>
+                    <select class="custom-select" id="searchBy" required>
+                      <option value="displayAll">Choose...</option>
+                        <option value="TRAIN_TYPE" >Train Type</option>
+                        <option value="TRAIN_STATUS">Train Status</option>
+                    </select>
+                  </div>
+                  <div class="col-xs-1">
+                    <label style="visibility: hidden;">break</label>
+                  <h3 id= "colon">:</h3>
+                  </div>
+                  <div class="col-md">
+                    <label style="visibility: hidden">break</label>
+                      <select class="custom-select" id="searchParam" required>
+						<option value="">Choose...</option>
+                    </select>
+                  </div>
+                  <div class="col-md">
+                    <br>
+                    <button class="btn btn-primary btn-lg btn-block" type="button" onclick="searchTrain()">Search</button>
+                  </div>
+                </div>
+            </form>
+            <br>
+            <hr>
+            <br>
+
+            <form class="form">
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md">
+                    <label for="trainToRemove">Please select the train you want to manage</label>
+                    <select class="custom-select dropdown" id="trainToRemove" required>
+                      <option value="">Choose...</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <br>
+          </div>
+            <div class="row">
+              <div class="col">
+              </div>
+              <div class="col">
+              </div>
+              <div class="col">
+              </div>
+              <div class="col">
+                  <button class="btn btn-danger btn-lg btn-block" type="submit" onclick="removeTrain()">Remove</button>
+              </div>
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End of remove Train section -->
+<br>
+<br>
+<!-- Manage Train section -->
+<section id = "removeTrain">
+  <div class="container">
+    <h3>Manage Train</h3>
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-body ">
+            <form class="form">
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md">
+                    <label for="statusManage">Status</label>
+                    <select class="custom-select" id="statusSearchBy" >
+                      <option value="">Choose...</option>
+                      <option>Operational</option>
+                      <option>Faulty</option>
+                      <option>Decommissioned</option>
+                    </select>
+                  </div>
+                  <div class="col-md">
+                    <label for="trainTypeManage">Train Type</label>
+                    <select class="custom-select d-block" id="trainTypeSearchBy" >
+                      <option value="">Choose...</option>
+                      <option>Steam</option>
+                			<option>Diesel</option>
+                			<option>Electric</option>
+                			<option>Transforming</option>
+                    </select>
+                  </div>
+                  <div class="col-md">
+                    <label for="noCarriages">Carriages</label>
+						<input class="custom-select" type="number" id = "carriageCountManage" name="Carriages" min="1" max="15">
+                  </div>
+                  <div class="col-md">
+                    <br>
+                    <button class="btn btn-primary btn-lg btn-block" type="button" onclick="searchTrainManage()">Search</button>
+                  </div>
+                </div>
+            </form>
+            <br>
+            <br>
+            <form class="form">
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md">
+                    <label for="trainToRemove">Train to update</label>
+                    <select class="custom-select dropdown" id="trainToUpdate" required>
+                      <option value="">Choose...</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <br>
+            <form class="form">
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md">
+                    <label for="status">Change status</label>
+                    <select class="custom-select" id="statusUpdate" required>
+                      <option value="TRAIN_TYPE">Choose...</option>
+                      <option>Operational</option>
+                      <option>Faulty</option>
+                      <option>Decommissioned</option>
+                    </select>
+                  </div>
+                  <div class="col-md">
+                    <label for="trainType">Change train type</label>
+                    <select class="custom-select d-block" id="trainTypeUpdate" required>
+
+                      <option value="">Choose...</option>
+                      <option>Steam</option>
+                			<option>Diesel</option>
+                			<option>Electric</option>
+                			<option>Transforming</option>
+                    </select>
+                  </div>
+                  <div class="col-md">
+                    <label for="noCarriages">Carriages</label>
+                    <input class="custom-select" type="number"id = "carriageCountUpdate" name="Carriages" min="1" max="15">
+                  </div>
+                </div>
+            </form>
+          </div>
+            <div class="row">
+              <div class="col">
+              </div>
+              <div class="col">
+              </div>
+              <div class="col">
+              </div>
+              <div class="col">
+                <button class="btn btn-warning btn-lg btn-block" type="button" onclick="updateTrain()">Update</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End of remove Train section -->
+<br>
+<br>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="js/jquery-3.2.1.min.js"></script>
+
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap-4.0.0.js"></script>
+  </body>
+</html>

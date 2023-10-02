@@ -1,0 +1,794 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="12.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CUSTOMERS">
+          <Key>
+            <PropertyRef Name="CUSTOMER_ID" />
+          </Key>
+          <Property Name="CUSTOMER_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CUSTOMER_FORENAME" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="CUSTOMER_SURNAME" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="USERNAME" Type="varchar2" MaxLength="16" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="DATE_OF_BIRTH" Type="date" Nullable="false" />
+          <Property Name="POST_CODE" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="ADDRESS_LINE" Type="varchar2" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EXPIRED_JOURNEYS">
+          <Key>
+            <PropertyRef Name="JOURNEY_ID" />
+          </Key>
+          <Property Name="JOURNEY_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="START_LOCATION_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="END_LOCATION_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DEPARTURE_DATE_TIME" Type="timestamp" Precision="6" Nullable="false" />
+          <Property Name="ARRIVAL_DATE_TIME" Type="timestamp" Precision="6" Nullable="false" />
+          <Property Name="JOURNEY_COMMENTS" Type="varchar2" MaxLength="255" />
+          <Property Name="JOURNEY_PRICE" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EXPIRED_TICKETS">
+          <Key>
+            <PropertyRef Name="TICKET_NO" />
+          </Key>
+          <Property Name="TICKET_NO" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="CUSTOMER_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="JOURNEY_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="PRICE" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="JOURNEYS">
+          <Key>
+            <PropertyRef Name="JOURNEY_ID" />
+          </Key>
+          <Property Name="JOURNEY_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="START_LOCATION_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="END_LOCATION_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DEPARTURE_DATE_TIME" Type="timestamp" Precision="6" Nullable="false" />
+          <Property Name="ARRIVAL_DATE_TIME" Type="timestamp" Precision="6" Nullable="false" />
+          <Property Name="JOURNEY_COMMENTS" Type="varchar2" MaxLength="255" />
+          <Property Name="JOURNEY_PRICE" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STAFF_ASSIGNMENTS">
+          <Key>
+            <PropertyRef Name="STAFF_ACCOUNT_ID" />
+            <PropertyRef Name="JOURNEY_ID" />
+          </Key>
+          <Property Name="STAFF_ACCOUNT_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="JOURNEY_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STAFF_USERS">
+          <Key>
+            <PropertyRef Name="STAFF_ID" />
+          </Key>
+          <Property Name="STAFF_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="USERNAME" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar2" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STATIONS">
+          <Key>
+            <PropertyRef Name="STATION_ID" />
+          </Key>
+          <Property Name="STATION_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="STATION_NAME" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="POST_CODE" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="ADDRESS" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="PLATFORM_COUNT" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="STATION_STATUS" Type="varchar2" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TICKETS">
+          <Key>
+            <PropertyRef Name="TICKET_NO" />
+          </Key>
+          <Property Name="TICKET_NO" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="CUSTOMER_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="JOURNEY_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PRICE" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TRAINS">
+          <Key>
+            <PropertyRef Name="TRAIN_ID" />
+          </Key>
+          <Property Name="TRAIN_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TRAIN_TYPE" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="CARRIAGE_COUNT" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TRAIN_STATUS" Type="varchar2" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PRCS251J.HISTORY_RECORDS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="HISTORY_RECORDS">
+          <Key>
+            <PropertyRef Name="JOURNEY_NO" />
+            <PropertyRef Name="DEPARTURE_STATION" />
+            <PropertyRef Name="ARRIVAL_STATION" />
+            <PropertyRef Name="DEPARTURE_TIME" />
+            <PropertyRef Name="ARRIVAL_TIME" />
+            <PropertyRef Name="JOURNEY_PRICE" />
+          </Key>
+          <Property Name="JOURNEY_NO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DEPARTURE_STATION" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="ARRIVAL_STATION" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="DEPARTURE_TIME" Type="timestamp" Precision="6" Nullable="false" />
+          <Property Name="ARRIVAL_TIME" Type="timestamp" Precision="6" Nullable="false" />
+          <Property Name="JOURNEY_COMMENTS" Type="varchar2" MaxLength="255" />
+          <Property Name="JOURNEY_PRICE" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PRCS251J.TIMETABLE_RECORDS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TIMETABLE_RECORDS">
+          <Key>
+            <PropertyRef Name="JOURNEY_NO" />
+            <PropertyRef Name="DEPARTURE_STATION" />
+            <PropertyRef Name="ARRIVAL_STATION" />
+            <PropertyRef Name="DEPARTURE_TIME" />
+            <PropertyRef Name="ARRIVAL_TIME" />
+            <PropertyRef Name="JOURNEY_PRICE" />
+          </Key>
+          <Property Name="JOURNEY_NO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DEPARTURE_STATION" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="ARRIVAL_STATION" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="DEPARTURE_TIME" Type="timestamp" Precision="6" Nullable="false" />
+          <Property Name="ARRIVAL_TIME" Type="timestamp" Precision="6" Nullable="false" />
+          <Property Name="JOURNEY_COMMENTS" Type="varchar2" MaxLength="255" />
+          <Property Name="JOURNEY_PRICE" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <Association Name="CUSTOMER_ID_FK">
+          <End Role="CUSTOMERS" Type="Self.CUSTOMERS" Multiplicity="1" />
+          <End Role="TICKETS" Type="Self.TICKETS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMERS">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Principal>
+            <Dependent Role="TICKETS">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARRIVAL_STATION">
+          <End Role="STATIONS" Type="Self.STATIONS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="JOURNEYS" Type="Self.JOURNEYS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STATIONS">
+              <PropertyRef Name="STATION_ID" />
+            </Principal>
+            <Dependent Role="JOURNEYS">
+              <PropertyRef Name="START_LOCATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DEPARTURE_STATION">
+          <End Role="STATIONS" Type="Self.STATIONS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="JOURNEYS" Type="Self.JOURNEYS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STATIONS">
+              <PropertyRef Name="STATION_ID" />
+            </Principal>
+            <Dependent Role="JOURNEYS">
+              <PropertyRef Name="END_LOCATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_END_LOCATION_ID_STATION_ID">
+          <End Role="STATIONS" Type="Self.STATIONS" Multiplicity="1" />
+          <End Role="EXPIRED_JOURNEYS" Type="Self.EXPIRED_JOURNEYS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STATIONS">
+              <PropertyRef Name="STATION_ID" />
+            </Principal>
+            <Dependent Role="EXPIRED_JOURNEYS">
+              <PropertyRef Name="END_LOCATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EXPIRED_TICKETS_CUSTOMER_ID">
+          <End Role="CUSTOMERS" Type="Self.CUSTOMERS" Multiplicity="0..1" />
+          <End Role="EXPIRED_TICKETS" Type="Self.EXPIRED_TICKETS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMERS">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Principal>
+            <Dependent Role="EXPIRED_TICKETS">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EXPIRED_TICKETS_JOURNEY_ID">
+          <End Role="EXPIRED_JOURNEYS" Type="Self.EXPIRED_JOURNEYS" Multiplicity="0..1" />
+          <End Role="EXPIRED_TICKETS" Type="Self.EXPIRED_TICKETS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EXPIRED_JOURNEYS">
+              <PropertyRef Name="JOURNEY_ID" />
+            </Principal>
+            <Dependent Role="EXPIRED_TICKETS">
+              <PropertyRef Name="JOURNEY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JOURNEY_ID">
+          <End Role="JOURNEYS" Type="Self.JOURNEYS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="STAFF_ASSIGNMENTS" Type="Self.STAFF_ASSIGNMENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JOURNEYS">
+              <PropertyRef Name="JOURNEY_ID" />
+            </Principal>
+            <Dependent Role="STAFF_ASSIGNMENTS">
+              <PropertyRef Name="JOURNEY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STAFF_ACCOUNT_ID">
+          <End Role="STAFF_USERS" Type="Self.STAFF_USERS" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="STAFF_ASSIGNMENTS" Type="Self.STAFF_ASSIGNMENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF_USERS">
+              <PropertyRef Name="STAFF_ID" />
+            </Principal>
+            <Dependent Role="STAFF_ASSIGNMENTS">
+              <PropertyRef Name="STAFF_ACCOUNT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_START_LOCATION_ID_STATION_ID">
+          <End Role="STATIONS" Type="Self.STATIONS" Multiplicity="1" />
+          <End Role="EXPIRED_JOURNEYS" Type="Self.EXPIRED_JOURNEYS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STATIONS">
+              <PropertyRef Name="STATION_ID" />
+            </Principal>
+            <Dependent Role="EXPIRED_JOURNEYS">
+              <PropertyRef Name="START_LOCATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="JOURNEY_ID_FK">
+          <End Role="JOURNEYS" Type="Self.JOURNEYS" Multiplicity="1" />
+          <End Role="TICKETS" Type="Self.TICKETS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JOURNEYS">
+              <PropertyRef Name="JOURNEY_ID" />
+            </Principal>
+            <Dependent Role="TICKETS">
+              <PropertyRef Name="JOURNEY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="VALIDATE_USER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PRCS251J">
+          <Parameter Name="P_USERNAME" Type="varchar2" Mode="In" />
+          <Parameter Name="P_PASSWORD" Type="varchar2" Mode="In" />
+          <Parameter Name="R_VALUE" Type="varchar2" Mode="Out" />
+        </Function>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="CUSTOMERS" EntityType="Self.CUSTOMERS" Schema="PRCS251J" store:Type="Tables" />
+          <EntitySet Name="EXPIRED_JOURNEYS" EntityType="Self.EXPIRED_JOURNEYS" Schema="PRCS251J" store:Type="Tables" />
+          <EntitySet Name="EXPIRED_TICKETS" EntityType="Self.EXPIRED_TICKETS" Schema="PRCS251J" store:Type="Tables" />
+          <EntitySet Name="JOURNEYS" EntityType="Self.JOURNEYS" Schema="PRCS251J" store:Type="Tables" />
+          <EntitySet Name="STAFF_ASSIGNMENTS" EntityType="Self.STAFF_ASSIGNMENTS" Schema="PRCS251J" store:Type="Tables" />
+          <EntitySet Name="STAFF_USERS" EntityType="Self.STAFF_USERS" Schema="PRCS251J" store:Type="Tables" />
+          <EntitySet Name="STATIONS" EntityType="Self.STATIONS" Schema="PRCS251J" store:Type="Tables" />
+          <EntitySet Name="TICKETS" EntityType="Self.TICKETS" Schema="PRCS251J" store:Type="Tables" />
+          <EntitySet Name="TRAINS" EntityType="Self.TRAINS" Schema="PRCS251J" store:Type="Tables" />
+          <EntitySet Name="HISTORY_RECORDS" EntityType="Self.HISTORY_RECORDS" store:Type="Views" store:Schema="PRCS251J">
+            <DefiningQuery>SELECT 
+"HISTORY_RECORDS"."JOURNEY_NO" AS "JOURNEY_NO", 
+"HISTORY_RECORDS"."DEPARTURE_STATION" AS "DEPARTURE_STATION", 
+"HISTORY_RECORDS"."ARRIVAL_STATION" AS "ARRIVAL_STATION", 
+"HISTORY_RECORDS"."DEPARTURE_TIME" AS "DEPARTURE_TIME", 
+"HISTORY_RECORDS"."ARRIVAL_TIME" AS "ARRIVAL_TIME", 
+"HISTORY_RECORDS"."JOURNEY_COMMENTS" AS "JOURNEY_COMMENTS", 
+"HISTORY_RECORDS"."JOURNEY_PRICE" AS "JOURNEY_PRICE"
+FROM "PRCS251J"."HISTORY_RECORDS" "HISTORY_RECORDS"</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TIMETABLE_RECORDS" EntityType="Self.TIMETABLE_RECORDS" store:Type="Views" store:Schema="PRCS251J">
+            <DefiningQuery>SELECT 
+"TIMETABLE_RECORDS"."JOURNEY_NO" AS "JOURNEY_NO", 
+"TIMETABLE_RECORDS"."DEPARTURE_STATION" AS "DEPARTURE_STATION", 
+"TIMETABLE_RECORDS"."ARRIVAL_STATION" AS "ARRIVAL_STATION", 
+"TIMETABLE_RECORDS"."DEPARTURE_TIME" AS "DEPARTURE_TIME", 
+"TIMETABLE_RECORDS"."ARRIVAL_TIME" AS "ARRIVAL_TIME", 
+"TIMETABLE_RECORDS"."JOURNEY_COMMENTS" AS "JOURNEY_COMMENTS", 
+"TIMETABLE_RECORDS"."JOURNEY_PRICE" AS "JOURNEY_PRICE"
+FROM "PRCS251J"."TIMETABLE_RECORDS" "TIMETABLE_RECORDS"</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="CUSTOMER_ID_FK" Association="Self.CUSTOMER_ID_FK">
+            <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+            <End Role="TICKETS" EntitySet="TICKETS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARRIVAL_STATION" Association="Self.FK_ARRIVAL_STATION">
+            <End Role="STATIONS" EntitySet="STATIONS" />
+            <End Role="JOURNEYS" EntitySet="JOURNEYS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DEPARTURE_STATION" Association="Self.FK_DEPARTURE_STATION">
+            <End Role="STATIONS" EntitySet="STATIONS" />
+            <End Role="JOURNEYS" EntitySet="JOURNEYS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_END_LOCATION_ID_STATION_ID" Association="Self.FK_END_LOCATION_ID_STATION_ID">
+            <End Role="STATIONS" EntitySet="STATIONS" />
+            <End Role="EXPIRED_JOURNEYS" EntitySet="EXPIRED_JOURNEYS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EXPIRED_TICKETS_CUSTOMER_ID" Association="Self.FK_EXPIRED_TICKETS_CUSTOMER_ID">
+            <End Role="CUSTOMERS" EntitySet="CUSTOMERS" />
+            <End Role="EXPIRED_TICKETS" EntitySet="EXPIRED_TICKETS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EXPIRED_TICKETS_JOURNEY_ID" Association="Self.FK_EXPIRED_TICKETS_JOURNEY_ID">
+            <End Role="EXPIRED_JOURNEYS" EntitySet="EXPIRED_JOURNEYS" />
+            <End Role="EXPIRED_TICKETS" EntitySet="EXPIRED_TICKETS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JOURNEY_ID" Association="Self.FK_JOURNEY_ID">
+            <End Role="JOURNEYS" EntitySet="JOURNEYS" />
+            <End Role="STAFF_ASSIGNMENTS" EntitySet="STAFF_ASSIGNMENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STAFF_ACCOUNT_ID" Association="Self.FK_STAFF_ACCOUNT_ID">
+            <End Role="STAFF_USERS" EntitySet="STAFF_USERS" />
+            <End Role="STAFF_ASSIGNMENTS" EntitySet="STAFF_ASSIGNMENTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_START_LOCATION_ID_STATION_ID" Association="Self.FK_START_LOCATION_ID_STATION_ID">
+            <End Role="STATIONS" EntitySet="STATIONS" />
+            <End Role="EXPIRED_JOURNEYS" EntitySet="EXPIRED_JOURNEYS" />
+          </AssociationSet>
+          <AssociationSet Name="JOURNEY_ID_FK" Association="Self.JOURNEY_ID_FK">
+            <End Role="JOURNEYS" EntitySet="JOURNEYS" />
+            <End Role="TICKETS" EntitySet="TICKETS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CUSTOMERS" EntityType="Model.CUSTOMER" />
+          <EntitySet Name="STAFF_USERS" EntityType="Model.STAFF_USERS" />
+          <FunctionImport Name="VALIDATE_USER">
+            <Parameter Name="P_USERNAME" Mode="In" Type="String" />
+            <Parameter Name="P_PASSWORD" Mode="In" Type="String" />
+            <Parameter Name="R_VALUE" Mode="Out" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="TIMETABLE_RECORDS" EntityType="Model.TIMETABLE_RECORDS" />
+          <EntitySet Name="JOURNEYS" EntityType="Model.JOURNEY" />
+          <EntitySet Name="STATIONS" EntityType="Model.STATION" />
+          <AssociationSet Name="FK_ARRIVAL_STATION" Association="Model.FK_ARRIVAL_STATION">
+            <End Role="STATION" EntitySet="STATIONS" />
+            <End Role="JOURNEY" EntitySet="JOURNEYS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DEPARTURE_STATION" Association="Model.FK_DEPARTURE_STATION">
+            <End Role="STATION" EntitySet="STATIONS" />
+            <End Role="JOURNEY" EntitySet="JOURNEYS" />
+          </AssociationSet>
+          <EntitySet Name="TICKETS" EntityType="Model.TICKET" />
+          <EntitySet Name="TRAINS" EntityType="Model.TRAIN" />
+          <AssociationSet Name="FK_CUSTOMERS" Association="Model.FK_CUSTOMERS">
+            <End Role="CUSTOMER" EntitySet="CUSTOMERS" />
+            <End Role="TICKET" EntitySet="TICKETS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JOURNEYS" Association="Model.FK_JOURNEYS">
+            <End Role="JOURNEY" EntitySet="JOURNEYS" />
+            <End Role="TICKET" EntitySet="TICKETS" />
+          </AssociationSet>
+          <EntitySet Name="EXPIRED_JOURNEYS" EntityType="Model.EXPIRED_JOURNEYS" />
+          <EntitySet Name="EXPIRED_TICKETS" EntityType="Model.EXPIRED_TICKETS" />
+          <EntitySet Name="HISTORY_RECORDS" EntityType="Model.HISTORY_RECORDS" />
+          <AssociationSet Name="FK_EXPIRED_TICKETS_CUSTOMER_ID" Association="Model.FK_EXPIRED_TICKETS_CUSTOMER_ID">
+            <End Role="CUSTOMER" EntitySet="CUSTOMERS" />
+            <End Role="EXPIRED_TICKETS" EntitySet="EXPIRED_TICKETS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_END_LOCATION_ID_STATION_ID" Association="Model.FK_END_LOCATION_ID_STATION_ID">
+            <End Role="STATION" EntitySet="STATIONS" />
+            <End Role="EXPIRED_JOURNEYS" EntitySet="EXPIRED_JOURNEYS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EXPIRED_TICKETS_JOURNEY_ID" Association="Model.FK_EXPIRED_TICKETS_JOURNEY_ID">
+            <End Role="EXPIRED_JOURNEYS" EntitySet="EXPIRED_JOURNEYS" />
+            <End Role="EXPIRED_TICKETS" EntitySet="EXPIRED_TICKETS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_START_LOCATION_ID_STATION_ID" Association="Model.FK_START_LOCATION_ID_STATION_ID">
+            <End Role="STATION" EntitySet="STATIONS" />
+            <End Role="EXPIRED_JOURNEYS" EntitySet="EXPIRED_JOURNEYS" />
+          </AssociationSet>
+          <AssociationSet Name="STAFF_ASSIGNMENTS" Association="Model.STAFF_ASSIGNMENTS">
+            <End Role="JOURNEY" EntitySet="JOURNEYS" />
+            <End Role="STAFF_USERS" EntitySet="STAFF_USERS" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="CUSTOMER_ID" />
+          </Key>
+          <Property Name="CUSTOMER_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="CUSTOMER_FORENAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CUSTOMER_SURNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="USERNAME" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="PASSWORD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TICKETS" Relationship="Model.FK_CUSTOMERS" FromRole="CUSTOMER" ToRole="TICKET" />
+          <Property Name="DATE_OF_BIRTH" Type="DateTime" Nullable="false" />
+          <Property Name="POST_CODE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS_LINE" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EXPIRED_TICKETS" Relationship="Model.FK_EXPIRED_TICKETS_CUSTOMER_ID" FromRole="CUSTOMER" ToRole="EXPIRED_TICKETS" />
+        </EntityType>
+        <EntityType Name="STAFF_USERS">
+          <Key>
+            <PropertyRef Name="STAFF_ID" />
+          </Key>
+          <Property Name="STAFF_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="USERNAME" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="PASSWORD" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="JOURNEYS" Relationship="Model.STAFF_ASSIGNMENTS" FromRole="STAFF_USERS" ToRole="JOURNEY" />
+        </EntityType>
+        <EntityType Name="TIMETABLE_RECORDS">
+          <Key>
+            <PropertyRef Name="JOURNEY_NO" />
+            <PropertyRef Name="DEPARTURE_STATION" />
+            <PropertyRef Name="ARRIVAL_STATION" />
+            <PropertyRef Name="DEPARTURE_TIME" />
+            <PropertyRef Name="ARRIVAL_TIME" />
+            <PropertyRef Name="JOURNEY_PRICE" />
+          </Key>
+          <Property Name="JOURNEY_NO" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="DEPARTURE_STATION" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ARRIVAL_STATION" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DEPARTURE_TIME" Type="DateTime" Nullable="false" Precision="6" />
+          <Property Name="ARRIVAL_TIME" Type="DateTime" Nullable="false" Precision="6" />
+          <Property Name="JOURNEY_COMMENTS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="JOURNEY_PRICE" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="JOURNEY">
+          <Key>
+            <PropertyRef Name="JOURNEY_ID" />
+          </Key>
+          <Property Name="JOURNEY_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="START_LOCATION_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="END_LOCATION_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="DEPARTURE_DATE_TIME" Type="DateTime" Nullable="false" Precision="6" />
+          <Property Name="ARRIVAL_DATE_TIME" Type="DateTime" Nullable="false" Precision="6" />
+          <Property Name="JOURNEY_COMMENTS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="STATION" Relationship="Model.FK_ARRIVAL_STATION" FromRole="JOURNEY" ToRole="STATION" />
+          <NavigationProperty Name="STATION1" Relationship="Model.FK_DEPARTURE_STATION" FromRole="JOURNEY" ToRole="STATION" />
+          <NavigationProperty Name="TICKETS" Relationship="Model.FK_JOURNEYS" FromRole="JOURNEY" ToRole="TICKET" />
+          <Property Name="JOURNEY_PRICE" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <NavigationProperty Name="STAFF_USERS" Relationship="Model.STAFF_ASSIGNMENTS" FromRole="JOURNEY" ToRole="STAFF_USERS" />
+        </EntityType>
+        <EntityType Name="STATION">
+          <Key>
+            <PropertyRef Name="STATION_ID" />
+          </Key>
+          <Property Name="STATION_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="STATION_NAME" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="POST_CODE" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PLATFORM_COUNT" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="STATION_STATUS" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="JOURNEYS" Relationship="Model.FK_ARRIVAL_STATION" FromRole="STATION" ToRole="JOURNEY" />
+          <NavigationProperty Name="JOURNEYS1" Relationship="Model.FK_DEPARTURE_STATION" FromRole="STATION" ToRole="JOURNEY" />
+          <NavigationProperty Name="EXPIRED_JOURNEYS" Relationship="Model.FK_END_LOCATION_ID_STATION_ID" FromRole="STATION" ToRole="EXPIRED_JOURNEYS" />
+          <NavigationProperty Name="EXPIRED_JOURNEYS1" Relationship="Model.FK_START_LOCATION_ID_STATION_ID" FromRole="STATION" ToRole="EXPIRED_JOURNEYS" />
+        </EntityType>
+        <Association Name="FK_ARRIVAL_STATION">
+          <End Type="Model.STATION" Role="STATION" Multiplicity="1" />
+          <End Type="Model.JOURNEY" Role="JOURNEY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STATION">
+              <PropertyRef Name="STATION_ID" />
+            </Principal>
+            <Dependent Role="JOURNEY">
+              <PropertyRef Name="END_LOCATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DEPARTURE_STATION">
+          <End Type="Model.STATION" Role="STATION" Multiplicity="1" />
+          <End Type="Model.JOURNEY" Role="JOURNEY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STATION">
+              <PropertyRef Name="STATION_ID" />
+            </Principal>
+            <Dependent Role="JOURNEY">
+              <PropertyRef Name="START_LOCATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TICKET">
+          <Key>
+            <PropertyRef Name="TICKET_NO" />
+          </Key>
+          <Property Name="TICKET_NO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CUSTOMER_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="JOURNEY_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="PRICE" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <NavigationProperty Name="CUSTOMER" Relationship="Model.FK_CUSTOMERS" FromRole="TICKET" ToRole="CUSTOMER" />
+          <NavigationProperty Name="JOURNEY" Relationship="Model.FK_JOURNEYS" FromRole="TICKET" ToRole="JOURNEY" />
+        </EntityType>
+        <EntityType Name="TRAIN">
+          <Key>
+            <PropertyRef Name="TRAIN_ID" />
+          </Key>
+          <Property Name="TRAIN_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="TRAIN_TYPE" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CARRIAGE_COUNT" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="TRAIN_STATUS" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_CUSTOMERS">
+          <End Type="Model.CUSTOMER" Role="CUSTOMER" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model.TICKET" Role="TICKET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Principal>
+            <Dependent Role="TICKET">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JOURNEYS">
+          <End Type="Model.JOURNEY" Role="JOURNEY" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model.TICKET" Role="TICKET" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JOURNEY">
+              <PropertyRef Name="JOURNEY_ID" />
+            </Principal>
+            <Dependent Role="TICKET">
+              <PropertyRef Name="JOURNEY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EXPIRED_JOURNEYS">
+          <Key>
+            <PropertyRef Name="JOURNEY_ID" />
+          </Key>
+          <Property Name="JOURNEY_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="START_LOCATION_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="END_LOCATION_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="DEPARTURE_DATE_TIME" Type="DateTime" Nullable="false" Precision="6" />
+          <Property Name="ARRIVAL_DATE_TIME" Type="DateTime" Nullable="false" Precision="6" />
+          <Property Name="JOURNEY_COMMENTS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="JOURNEY_PRICE" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <NavigationProperty Name="STATION" Relationship="Model.FK_END_LOCATION_ID_STATION_ID" FromRole="EXPIRED_JOURNEYS" ToRole="STATION" />
+          <NavigationProperty Name="EXPIRED_TICKETS" Relationship="Model.FK_EXPIRED_TICKETS_JOURNEY_ID" FromRole="EXPIRED_JOURNEYS" ToRole="EXPIRED_TICKETS" />
+          <NavigationProperty Name="STATION1" Relationship="Model.FK_START_LOCATION_ID_STATION_ID" FromRole="EXPIRED_JOURNEYS" ToRole="STATION" />
+        </EntityType>
+        <EntityType Name="EXPIRED_TICKETS">
+          <Key>
+            <PropertyRef Name="TICKET_NO" />
+          </Key>
+          <Property Name="TICKET_NO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CUSTOMER_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="JOURNEY_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="PRICE" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="CUSTOMER" Relationship="Model.FK_EXPIRED_TICKETS_CUSTOMER_ID" FromRole="EXPIRED_TICKETS" ToRole="CUSTOMER" />
+          <NavigationProperty Name="EXPIRED_JOURNEYS" Relationship="Model.FK_EXPIRED_TICKETS_JOURNEY_ID" FromRole="EXPIRED_TICKETS" ToRole="EXPIRED_JOURNEYS" />
+        </EntityType>
+        <EntityType Name="HISTORY_RECORDS">
+          <Key>
+            <PropertyRef Name="JOURNEY_NO" />
+            <PropertyRef Name="DEPARTURE_STATION" />
+            <PropertyRef Name="ARRIVAL_STATION" />
+            <PropertyRef Name="DEPARTURE_TIME" />
+            <PropertyRef Name="ARRIVAL_TIME" />
+            <PropertyRef Name="JOURNEY_PRICE" />
+          </Key>
+          <Property Name="JOURNEY_NO" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="DEPARTURE_STATION" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ARRIVAL_STATION" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DEPARTURE_TIME" Type="DateTime" Nullable="false" Precision="6" />
+          <Property Name="ARRIVAL_TIME" Type="DateTime" Nullable="false" Precision="6" />
+          <Property Name="JOURNEY_COMMENTS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="JOURNEY_PRICE" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+        </EntityType>
+        <Association Name="FK_EXPIRED_TICKETS_CUSTOMER_ID">
+          <End Type="Model.CUSTOMER" Role="CUSTOMER" Multiplicity="0..1" />
+          <End Type="Model.EXPIRED_TICKETS" Role="EXPIRED_TICKETS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Principal>
+            <Dependent Role="EXPIRED_TICKETS">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_END_LOCATION_ID_STATION_ID">
+          <End Type="Model.STATION" Role="STATION" Multiplicity="1" />
+          <End Type="Model.EXPIRED_JOURNEYS" Role="EXPIRED_JOURNEYS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STATION">
+              <PropertyRef Name="STATION_ID" />
+            </Principal>
+            <Dependent Role="EXPIRED_JOURNEYS">
+              <PropertyRef Name="END_LOCATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EXPIRED_TICKETS_JOURNEY_ID">
+          <End Type="Model.EXPIRED_JOURNEYS" Role="EXPIRED_JOURNEYS" Multiplicity="0..1" />
+          <End Type="Model.EXPIRED_TICKETS" Role="EXPIRED_TICKETS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EXPIRED_JOURNEYS">
+              <PropertyRef Name="JOURNEY_ID" />
+            </Principal>
+            <Dependent Role="EXPIRED_TICKETS">
+              <PropertyRef Name="JOURNEY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_START_LOCATION_ID_STATION_ID">
+          <End Type="Model.STATION" Role="STATION" Multiplicity="1" />
+          <End Type="Model.EXPIRED_JOURNEYS" Role="EXPIRED_JOURNEYS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STATION">
+              <PropertyRef Name="STATION_ID" />
+            </Principal>
+            <Dependent Role="EXPIRED_JOURNEYS">
+              <PropertyRef Name="START_LOCATION_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="STAFF_ASSIGNMENTS">
+          <End Type="Model.JOURNEY" Role="JOURNEY" Multiplicity="*" />
+          <End Type="Model.STAFF_USERS" Role="STAFF_USERS" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="CUSTOMERS">
+            <EntityTypeMapping TypeName="Model.CUSTOMER">
+              <MappingFragment StoreEntitySet="CUSTOMERS">
+                <ScalarProperty Name="ADDRESS_LINE" ColumnName="ADDRESS_LINE" />
+                <ScalarProperty Name="POST_CODE" ColumnName="POST_CODE" />
+                <ScalarProperty Name="DATE_OF_BIRTH" ColumnName="DATE_OF_BIRTH" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="CUSTOMER_SURNAME" ColumnName="CUSTOMER_SURNAME" />
+                <ScalarProperty Name="CUSTOMER_FORENAME" ColumnName="CUSTOMER_FORENAME" />
+                <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STAFF_USERS">
+            <EntityTypeMapping TypeName="Model.STAFF_USERS">
+              <MappingFragment StoreEntitySet="STAFF_USERS">
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="STAFF_ID" ColumnName="STAFF_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="VALIDATE_USER" FunctionName="Model.Store.VALIDATE_USER" />
+          <EntitySetMapping Name="TIMETABLE_RECORDS">
+            <EntityTypeMapping TypeName="Model.TIMETABLE_RECORDS">
+              <MappingFragment StoreEntitySet="TIMETABLE_RECORDS">
+                <ScalarProperty Name="JOURNEY_PRICE" ColumnName="JOURNEY_PRICE" />
+                <ScalarProperty Name="JOURNEY_COMMENTS" ColumnName="JOURNEY_COMMENTS" />
+                <ScalarProperty Name="ARRIVAL_TIME" ColumnName="ARRIVAL_TIME" />
+                <ScalarProperty Name="DEPARTURE_TIME" ColumnName="DEPARTURE_TIME" />
+                <ScalarProperty Name="ARRIVAL_STATION" ColumnName="ARRIVAL_STATION" />
+                <ScalarProperty Name="DEPARTURE_STATION" ColumnName="DEPARTURE_STATION" />
+                <ScalarProperty Name="JOURNEY_NO" ColumnName="JOURNEY_NO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JOURNEYS">
+            <EntityTypeMapping TypeName="Model.JOURNEY">
+              <MappingFragment StoreEntitySet="JOURNEYS">
+                <ScalarProperty Name="JOURNEY_PRICE" ColumnName="JOURNEY_PRICE" />
+                <ScalarProperty Name="JOURNEY_COMMENTS" ColumnName="JOURNEY_COMMENTS" />
+                <ScalarProperty Name="ARRIVAL_DATE_TIME" ColumnName="ARRIVAL_DATE_TIME" />
+                <ScalarProperty Name="DEPARTURE_DATE_TIME" ColumnName="DEPARTURE_DATE_TIME" />
+                <ScalarProperty Name="END_LOCATION_ID" ColumnName="END_LOCATION_ID" />
+                <ScalarProperty Name="START_LOCATION_ID" ColumnName="START_LOCATION_ID" />
+                <ScalarProperty Name="JOURNEY_ID" ColumnName="JOURNEY_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STATIONS">
+            <EntityTypeMapping TypeName="Model.STATION">
+              <MappingFragment StoreEntitySet="STATIONS">
+                <ScalarProperty Name="STATION_STATUS" ColumnName="STATION_STATUS" />
+                <ScalarProperty Name="PLATFORM_COUNT" ColumnName="PLATFORM_COUNT" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="POST_CODE" ColumnName="POST_CODE" />
+                <ScalarProperty Name="STATION_NAME" ColumnName="STATION_NAME" />
+                <ScalarProperty Name="STATION_ID" ColumnName="STATION_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TICKETS">
+            <EntityTypeMapping TypeName="Model.TICKET">
+              <MappingFragment StoreEntitySet="TICKETS">
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="JOURNEY_ID" ColumnName="JOURNEY_ID" />
+                <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+                <ScalarProperty Name="TICKET_NO" ColumnName="TICKET_NO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRAINS">
+            <EntityTypeMapping TypeName="Model.TRAIN">
+              <MappingFragment StoreEntitySet="TRAINS">
+                <ScalarProperty Name="TRAIN_STATUS" ColumnName="TRAIN_STATUS" />
+                <ScalarProperty Name="CARRIAGE_COUNT" ColumnName="CARRIAGE_COUNT" />
+                <ScalarProperty Name="TRAIN_TYPE" ColumnName="TRAIN_TYPE" />
+                <ScalarProperty Name="TRAIN_ID" ColumnName="TRAIN_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EXPIRED_JOURNEYS">
+            <EntityTypeMapping TypeName="Model.EXPIRED_JOURNEYS">
+              <MappingFragment StoreEntitySet="EXPIRED_JOURNEYS">
+                <ScalarProperty Name="JOURNEY_PRICE" ColumnName="JOURNEY_PRICE" />
+                <ScalarProperty Name="JOURNEY_COMMENTS" ColumnName="JOURNEY_COMMENTS" />
+                <ScalarProperty Name="ARRIVAL_DATE_TIME" ColumnName="ARRIVAL_DATE_TIME" />
+                <ScalarProperty Name="DEPARTURE_DATE_TIME" ColumnName="DEPARTURE_DATE_TIME" />
+                <ScalarProperty Name="END_LOCATION_ID" ColumnName="END_LOCATION_ID" />
+                <ScalarProperty Name="START_LOCATION_ID" ColumnName="START_LOCATION_ID" />
+                <ScalarProperty Name="JOURNEY_ID" ColumnName="JOURNEY_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EXPIRED_TICKETS">
+            <EntityTypeMapping TypeName="Model.EXPIRED_TICKETS">
+              <MappingFragment StoreEntitySet="EXPIRED_TICKETS">
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="JOURNEY_ID" ColumnName="JOURNEY_ID" />
+                <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+                <ScalarProperty Name="TICKET_NO" ColumnName="TICKET_NO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HISTORY_RECORDS">
+            <EntityTypeMapping TypeName="Model.HISTORY_RECORDS">
+              <MappingFragment StoreEntitySet="HISTORY_RECORDS">
+                <ScalarProperty Name="JOURNEY_PRICE" ColumnName="JOURNEY_PRICE" />
+                <ScalarProperty Name="JOURNEY_COMMENTS" ColumnName="JOURNEY_COMMENTS" />
+                <ScalarProperty Name="ARRIVAL_TIME" ColumnName="ARRIVAL_TIME" />
+                <ScalarProperty Name="DEPARTURE_TIME" ColumnName="DEPARTURE_TIME" />
+                <ScalarProperty Name="ARRIVAL_STATION" ColumnName="ARRIVAL_STATION" />
+                <ScalarProperty Name="DEPARTURE_STATION" ColumnName="DEPARTURE_STATION" />
+                <ScalarProperty Name="JOURNEY_NO" ColumnName="JOURNEY_NO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="STAFF_ASSIGNMENTS" TypeName="Model.STAFF_ASSIGNMENTS" StoreEntitySet="STAFF_ASSIGNMENTS">
+            <EndProperty Name="STAFF_USERS">
+              <ScalarProperty Name="STAFF_ID" ColumnName="STAFF_ACCOUNT_ID" />
+            </EndProperty>
+            <EndProperty Name="JOURNEY">
+              <ScalarProperty Name="JOURNEY_ID" ColumnName="JOURNEY_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

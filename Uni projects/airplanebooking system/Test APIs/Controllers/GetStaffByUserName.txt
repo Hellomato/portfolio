@@ -1,0 +1,12 @@
+        // GET: api/STAFF_ACCOUNT/5
+        [ResponseType(typeof(STAFF_ACCOUNT))]
+        public async Task<IHttpActionResult> GetSTAFF_ACCOUNT(string username)
+        {
+            STAFF_ACCOUNT sTAFF_ACCOUNT = await db.STAFF_ACCOUNT.SqlQuery($"SELECT * FROM PRCS251J.STAFF_ACCOUNT WHERE USERNAME = '{username}'").FirstAsync();
+            if (sTAFF_ACCOUNT == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(sTAFF_ACCOUNT);
+        }

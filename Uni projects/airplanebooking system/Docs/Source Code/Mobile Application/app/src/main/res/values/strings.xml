@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Mobile Application</string>
+    <string name="title_activity_home_screen">Dashboard</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_timetable">Journeys</string>
+    <string name="title_activity_timetable_entry_view">TimetableEntryView</string>
+    <string name="title_activity_timetable_record_view">Journey Information</string>
+    <string name="title_activity_ticket_search">Live Times and Tickets</string>
+    <string name="title_activity_booked_journeys">Your Tickets</string>
+</resources>

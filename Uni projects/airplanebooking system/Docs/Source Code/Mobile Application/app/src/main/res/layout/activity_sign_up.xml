@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/blue"
+    tools:context="com.example.controllers.SignUp">
+
+    <EditText
+        android:id="@+id/txtFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="First name"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView2"
+        app:layout_constraintEnd_toEndOf="@+id/txtSurname"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txtSurname"
+        app:layout_constraintTop_toTopOf="@+id/cardView2"
+        app:layout_constraintVertical_bias="0.014" />
+
+    <EditText
+        android:id="@+id/txtSurname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Surname"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView2"
+        app:layout_constraintEnd_toEndOf="@+id/txtUsername"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txtUsername"
+        app:layout_constraintTop_toTopOf="@+id/cardView2"
+        app:layout_constraintVertical_bias="0.147" />
+
+    <EditText
+        android:id="@+id/txtUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Username"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView2"
+        app:layout_constraintEnd_toEndOf="@+id/txtPassword"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txtPassword"
+        app:layout_constraintTop_toTopOf="@+id/cardView2"
+        app:layout_constraintVertical_bias="0.276" />
+
+    <EditText
+        android:id="@+id/txtDateBirth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Date of Birth"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView2"
+        app:layout_constraintEnd_toEndOf="@+id/txtAddress"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txtAddress"
+        app:layout_constraintTop_toTopOf="@+id/cardView2"
+        app:layout_constraintVertical_bias="0.548" />
+
+    <EditText
+        android:id="@+id/txtAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Address"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView2"
+        app:layout_constraintEnd_toEndOf="@+id/txtPostcode"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txtPostcode"
+        app:layout_constraintTop_toTopOf="@+id/cardView2"
+        app:layout_constraintVertical_bias="0.68" />
+
+    <EditText
+        android:id="@+id/txtPostcode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Postcode"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView2"
+        app:layout_constraintEnd_toEndOf="@+id/cardView2"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="@+id/cardView2"
+        app:layout_constraintTop_toTopOf="@+id/cardView2"
+        app:layout_constraintVertical_bias="0.815" />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="create account"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPostcode"
+        app:layout_constraintVertical_bias="0.026" />
+
+    <EditText
+        android:id="@+id/txtPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView2"
+        app:layout_constraintEnd_toEndOf="@+id/txtDateBirth"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txtDateBirth"
+        app:layout_constraintTop_toTopOf="@+id/cardView2"
+        app:layout_constraintVertical_bias="0.403" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="280dp"
+        android:layout_height="446dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="-1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.643" />
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Sign Up"
+        android:textColor="@android:color/white"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/cardView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.905" />
+
+</android.support.constraint.ConstraintLayout>

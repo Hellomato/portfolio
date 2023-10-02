@@ -1,0 +1,13 @@
+CREATE OR REPLACE TRIGGER TRG_TRAIN_ID
+    BEFORE INSERT OR UPDATE OF 
+    TRAIN_ID
+    ON TRAINS FOR EACH ROW
+    BEGIN
+    IF INSERTING THEN
+        IF :NEW.TRAIN_ID IS NULL THEN
+            SELECT TRAIN_ID_seq.nextval
+            INTO :NEW.TRAIN_ID
+            FROM sys.dual;
+        END IF;
+    END IF;
+ END; 

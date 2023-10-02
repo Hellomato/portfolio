@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+  </head>
+  <body>
+        <form name= "LoginForm" role="form">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Username">
+          </div>
+          <p class = "error" id ="usernameError"> </p>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password">
+          </div>
+          <p class = "error" id = "passwordError"> </p>
+
+          <button type="submit" value="Submit"  onclick="return LoginForm" class="btn btn-block">
+            Login in
+          </button>
+        </form>
+    </body>

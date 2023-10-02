@@ -1,0 +1,58 @@
+.modal-top{
+  padding: 10px
+}
+.modal.body{
+  padding:  - 10px
+}
+.modal-top, .close {
+  background-color: #232323;
+  color: #fff;
+  text-align: center;
+  font-size: 30px;
+}
+.modal-top, .modal-body {
+  padding: 40px 50px;
+}
+.error{
+  color: red;
+}
+.forms{
+  background-color:white
+}
+.bg-dark{
+  background-color: #313840;
+}
+.jumbotron {
+  background-color: #d6dce2;
+  border-radius: 0.3rem;
+}
+.btn-danger {
+  color: #fff;
+  background-color: #f32626;
+  border-color: #dc3545;
+}
+
+.btn-danger:hover {
+  color: #fff;
+  background-color: #ca1b2b;
+  border-color: #bd2130;
+}
+.btn-success {
+  color: #fff;
+  background-color: #2db74c;
+  border-color: #28a745;
+}
+
+.btn-success:hover {
+  color: #fff;
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+#logout {
+  display: block;
+}
+
+
+#loginNav{
+  display: block;
+}

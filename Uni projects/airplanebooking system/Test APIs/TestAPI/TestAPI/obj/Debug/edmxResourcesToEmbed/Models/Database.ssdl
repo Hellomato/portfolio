@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="12.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CUSTOMERS">
+    <Key>
+      <PropertyRef Name="CUSTOMER_ID" />
+    </Key>
+    <Property Name="CUSTOMER_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CUSTOMER_FORENAME" Type="varchar2" MaxLength="50" Nullable="false" />
+    <Property Name="CUSTOMER_SURNAME" Type="varchar2" MaxLength="50" Nullable="false" />
+    <Property Name="USERNAME" Type="varchar2" MaxLength="16" Nullable="false" />
+    <Property Name="PASSWORD" Type="varchar2" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="STAFF_ACCOUNT">
+    <Key>
+      <PropertyRef Name="STAFF_ID" />
+    </Key>
+    <Property Name="STAFF_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="STAFF_ROLE" Type="varchar2" MaxLength="50" />
+    <Property Name="STAFF_FORENAME" Type="varchar2" MaxLength="50" />
+    <Property Name="STAFF_SURNAME" Type="varchar2" MaxLength="50" />
+    <Property Name="DATE_OF_BIRTH" Type="date" />
+    <Property Name="ADDRESS_LINE" Type="varchar2" MaxLength="50" />
+    <Property Name="POST_CODE" Type="varchar2" MaxLength="50" />
+    <Property Name="USERNAME" Type="varchar2" MaxLength="16" />
+  </EntityType>
+  <EntityType Name="STAFF_USERS">
+    <Key>
+      <PropertyRef Name="STAFF_ID" />
+    </Key>
+    <Property Name="STAFF_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="USERNAME" Type="varchar2" MaxLength="30" Nullable="false" />
+    <Property Name="PASSWORD" Type="varchar2" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PRCS251J.TIMETABLE_RECORDS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TIMETABLE_RECORDS">
+    <Key>
+      <PropertyRef Name="Journey No" />
+      <PropertyRef Name="Departure Station" />
+      <PropertyRef Name="Arrival Station" />
+      <PropertyRef Name="Departure Time" />
+      <PropertyRef Name="Arrival Time" />
+    </Key>
+    <Property Name="Journey No" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="Departure Station" Type="varchar2" MaxLength="255" Nullable="false" />
+    <Property Name="Arrival Station" Type="varchar2" MaxLength="255" Nullable="false" />
+    <Property Name="Departure Time" Type="date" Nullable="false" />
+    <Property Name="Arrival Time" Type="date" Nullable="false" />
+    <Property Name="Journey Comments" Type="varchar2" MaxLength="255" />
+  </EntityType>
+  <Function Name="VALIDATE_USER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PRCS251J">
+    <Parameter Name="P_USERNAME" Type="varchar2" Mode="In" />
+    <Parameter Name="P_PASSWORD" Type="varchar2" Mode="In" />
+    <Parameter Name="R_VALUE" Type="varchar2" Mode="Out" />
+  </Function>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="CUSTOMERS" EntityType="Self.CUSTOMERS" Schema="PRCS251J" store:Type="Tables" />
+    <EntitySet Name="STAFF_ACCOUNT" EntityType="Self.STAFF_ACCOUNT" Schema="PRCS251J" store:Type="Tables" />
+    <EntitySet Name="STAFF_USERS" EntityType="Self.STAFF_USERS" Schema="PRCS251J" store:Type="Tables" />
+    <EntitySet Name="TIMETABLE_RECORDS" EntityType="Self.TIMETABLE_RECORDS" store:Type="Views" store:Schema="PRCS251J">
+      <DefiningQuery>SELECT 
+"TIMETABLE_RECORDS"."Journey No" AS "Journey No", 
+"TIMETABLE_RECORDS"."Departure Station" AS "Departure Station", 
+"TIMETABLE_RECORDS"."Arrival Station" AS "Arrival Station", 
+"TIMETABLE_RECORDS"."Departure Time" AS "Departure Time", 
+"TIMETABLE_RECORDS"."Arrival Time" AS "Arrival Time", 
+"TIMETABLE_RECORDS"."Journey Comments" AS "Journey Comments"
+FROM "PRCS251J"."TIMETABLE_RECORDS" "TIMETABLE_RECORDS"</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

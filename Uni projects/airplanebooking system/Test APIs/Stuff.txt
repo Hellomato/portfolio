@@ -1,0 +1,47 @@
+        // GET: api/STAFF_ACCOUNT/5
+        [ResponseType(typeof(STAFF_ACCOUNT))]
+        public async Task<IHttpActionResult> GetSTAFF_ACCOUNT(string username)
+        {
+            STAFF_ACCOUNT sTAFF_ACCOUNT = await db.STAFF_ACCOUNT.FindAsync(username);
+            if (sTAFF_ACCOUNT == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(sTAFF_ACCOUNT);
+        }
+
+
+
+CREATE TABLE PRCS251J.staff_account
+    (staff_id int,
+        CONSTRAINT staff_id_pk
+        PRIMARY KEY (staff_id),
+    staff_role VARCHAR2(50),
+    staff_forename VARCHAR2(50),
+	staff_surname VARCHAR2(50),
+    date_of_birth date,
+    address_line Varchar2(50),
+    post_code Varchar2(50),
+    username VARCHAR2(16)
+);
+
+CREATE SEQUENCE staff_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NOCACHE
+    NOCYCLE;
+    
+CREATE OR REPLACE TRIGGER PRCS251J.TRG_staff BEFORE INSERT OR 
+    UPDATE OF staff_role, staff_forename, staff_surname ,address_line, 
+		post_code, username ON staff_account FOR EACH ROW
+    
+BEGIN
+    IF INSERTING THEN
+        IF :NEW.staff_id IS NULL THEN
+            SELECT staff_id_seq.nextval
+            INTO :NEW.staff_id
+            FROM sys.dual;
+        END IF;
+    END IF;
+ END;

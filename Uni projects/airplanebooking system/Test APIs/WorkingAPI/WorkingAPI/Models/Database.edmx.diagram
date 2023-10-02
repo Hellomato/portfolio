@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a804f53a27634484be8583bf150c7922" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.CUSTOMER" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.STAFF_USERS" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="Model.TIMETABLE_RECORDS" Width="2.25" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.JOURNEY" Width="1.5" PointX="5.625" PointY="4" />
+        <EntityTypeShape EntityType="Model.STATION" Width="1.5" PointX="3.375" PointY="4" />
+        <AssociationConnector Association="Model.FK_ARRIVAL_STATION" />
+        <AssociationConnector Association="Model.FK_DEPARTURE_STATION" />
+        <EntityTypeShape EntityType="Model.TICKET" Width="1.5" PointX="8.25" PointY="2.625" />
+        <EntityTypeShape EntityType="Model.TRAIN" Width="1.5" PointX="0.75" PointY="6.75" />
+        <AssociationConnector Association="Model.FK_CUSTOMERS" />
+        <AssociationConnector Association="Model.FK_JOURNEYS" />
+        <EntityTypeShape EntityType="Model.EXPIRED_JOURNEYS" Width="1.5" PointX="5.625" PointY="8" />
+        <EntityTypeShape EntityType="Model.EXPIRED_TICKETS" Width="1.5" PointX="7.875" PointY="5.75" />
+        <EntityTypeShape EntityType="Model.HISTORY_RECORDS" Width="1.5" PointX="8.375" PointY="8.75" />
+        <AssociationConnector Association="Model.FK_EXPIRED_TICKETS_CUSTOMER_ID" />
+        <AssociationConnector Association="Model.FK_END_LOCATION_ID_STATION_ID" />
+        <AssociationConnector Association="Model.FK_EXPIRED_TICKETS_JOURNEY_ID" />
+        <AssociationConnector Association="Model.FK_START_LOCATION_ID_STATION_ID" />
+        <AssociationConnector Association="Model.STAFF_ASSIGNMENTS" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

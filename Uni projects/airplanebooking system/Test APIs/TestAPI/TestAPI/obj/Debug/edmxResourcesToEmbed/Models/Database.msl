@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="STAFF_ACCOUNT">
+      <EntityTypeMapping TypeName="Model.STAFF_ACCOUNT">
+        <MappingFragment StoreEntitySet="STAFF_ACCOUNT">
+          <ScalarProperty Name="STAFF_ID" ColumnName="STAFF_ID" />
+          <ScalarProperty Name="STAFF_ROLE" ColumnName="STAFF_ROLE" />
+          <ScalarProperty Name="STAFF_FORENAME" ColumnName="STAFF_FORENAME" />
+          <ScalarProperty Name="STAFF_SURNAME" ColumnName="STAFF_SURNAME" />
+          <ScalarProperty Name="DATE_OF_BIRTH" ColumnName="DATE_OF_BIRTH" />
+          <ScalarProperty Name="ADDRESS_LINE" ColumnName="ADDRESS_LINE" />
+          <ScalarProperty Name="POST_CODE" ColumnName="POST_CODE" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="VALIDATE_USER" FunctionName="Model.Store.VALIDATE_USER" />
+    <EntitySetMapping Name="CUSTOMERS">
+      <EntityTypeMapping TypeName="Model.CUSTOMER">
+        <MappingFragment StoreEntitySet="CUSTOMERS">
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="CUSTOMER_SURNAME" ColumnName="CUSTOMER_SURNAME" />
+          <ScalarProperty Name="CUSTOMER_FORENAME" ColumnName="CUSTOMER_FORENAME" />
+          <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STAFF_USERS">
+      <EntityTypeMapping TypeName="Model.STAFF_USERS">
+        <MappingFragment StoreEntitySet="STAFF_USERS">
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="STAFF_ID" ColumnName="STAFF_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIMETABLE_RECORDS">
+      <EntityTypeMapping TypeName="Model.TIMETABLE_RECORDS">
+        <MappingFragment StoreEntitySet="TIMETABLE_RECORDS">
+          <ScalarProperty Name="Journey_Comments" ColumnName="Journey Comments" />
+          <ScalarProperty Name="Arrival_Time" ColumnName="Arrival Time" />
+          <ScalarProperty Name="Departure_Time" ColumnName="Departure Time" />
+          <ScalarProperty Name="Arrival_Station" ColumnName="Arrival Station" />
+          <ScalarProperty Name="Departure_Station" ColumnName="Departure Station" />
+          <ScalarProperty Name="Journey_No" ColumnName="Journey No" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

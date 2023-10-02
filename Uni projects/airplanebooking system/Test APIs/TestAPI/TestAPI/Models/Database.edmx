@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="12.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CUSTOMERS">
+          <Key>
+            <PropertyRef Name="CUSTOMER_ID" />
+          </Key>
+          <Property Name="CUSTOMER_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CUSTOMER_FORENAME" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="CUSTOMER_SURNAME" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="USERNAME" Type="varchar2" MaxLength="16" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar2" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STAFF_ACCOUNT">
+          <Key>
+            <PropertyRef Name="STAFF_ID" />
+          </Key>
+          <Property Name="STAFF_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="STAFF_ROLE" Type="varchar2" MaxLength="50" />
+          <Property Name="STAFF_FORENAME" Type="varchar2" MaxLength="50" />
+          <Property Name="STAFF_SURNAME" Type="varchar2" MaxLength="50" />
+          <Property Name="DATE_OF_BIRTH" Type="date" />
+          <Property Name="ADDRESS_LINE" Type="varchar2" MaxLength="50" />
+          <Property Name="POST_CODE" Type="varchar2" MaxLength="50" />
+          <Property Name="USERNAME" Type="varchar2" MaxLength="16" />
+        </EntityType>
+        <EntityType Name="STAFF_USERS">
+          <Key>
+            <PropertyRef Name="STAFF_ID" />
+          </Key>
+          <Property Name="STAFF_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="USERNAME" Type="varchar2" MaxLength="30" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar2" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PRCS251J.TIMETABLE_RECORDS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TIMETABLE_RECORDS">
+          <Key>
+            <PropertyRef Name="Journey No" />
+            <PropertyRef Name="Departure Station" />
+            <PropertyRef Name="Arrival Station" />
+            <PropertyRef Name="Departure Time" />
+            <PropertyRef Name="Arrival Time" />
+          </Key>
+          <Property Name="Journey No" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="Departure Station" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="Arrival Station" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="Departure Time" Type="date" Nullable="false" />
+          <Property Name="Arrival Time" Type="date" Nullable="false" />
+          <Property Name="Journey Comments" Type="varchar2" MaxLength="255" />
+        </EntityType>
+        <Function Name="VALIDATE_USER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="PRCS251J">
+          <Parameter Name="P_USERNAME" Type="varchar2" Mode="In" />
+          <Parameter Name="P_PASSWORD" Type="varchar2" Mode="In" />
+          <Parameter Name="R_VALUE" Type="varchar2" Mode="Out" />
+        </Function>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="CUSTOMERS" EntityType="Self.CUSTOMERS" Schema="PRCS251J" store:Type="Tables" />
+          <EntitySet Name="STAFF_ACCOUNT" EntityType="Self.STAFF_ACCOUNT" Schema="PRCS251J" store:Type="Tables" />
+          <EntitySet Name="STAFF_USERS" EntityType="Self.STAFF_USERS" Schema="PRCS251J" store:Type="Tables" />
+          <EntitySet Name="TIMETABLE_RECORDS" EntityType="Self.TIMETABLE_RECORDS" store:Type="Views" store:Schema="PRCS251J">
+            <DefiningQuery>SELECT 
+"TIMETABLE_RECORDS"."Journey No" AS "Journey No", 
+"TIMETABLE_RECORDS"."Departure Station" AS "Departure Station", 
+"TIMETABLE_RECORDS"."Arrival Station" AS "Arrival Station", 
+"TIMETABLE_RECORDS"."Departure Time" AS "Departure Time", 
+"TIMETABLE_RECORDS"."Arrival Time" AS "Arrival Time", 
+"TIMETABLE_RECORDS"."Journey Comments" AS "Journey Comments"
+FROM "PRCS251J"."TIMETABLE_RECORDS" "TIMETABLE_RECORDS"</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="STAFF_ACCOUNT">
+          <Key>
+            <PropertyRef Name="STAFF_ID" />
+          </Key>
+          <Property Name="STAFF_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="STAFF_ROLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STAFF_FORENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STAFF_SURNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DATE_OF_BIRTH" Type="DateTime" />
+          <Property Name="ADDRESS_LINE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="POST_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="STAFF_ACCOUNT" EntityType="Self.STAFF_ACCOUNT" />
+          <FunctionImport Name="VALIDATE_USER">
+            <Parameter Name="P_USERNAME" Mode="In" Type="String" />
+            <Parameter Name="P_PASSWORD" Mode="In" Type="String" />
+            <Parameter Name="R_VALUE" Mode="Out" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="CUSTOMERS" EntityType="Model.CUSTOMER" />
+          <EntitySet Name="STAFF_USERS" EntityType="Model.STAFF_USERS" />
+          <EntitySet Name="TIMETABLE_RECORDS" EntityType="Model.TIMETABLE_RECORDS" />
+        </EntityContainer>
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="CUSTOMER_ID" />
+          </Key>
+          <Property Name="CUSTOMER_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="CUSTOMER_FORENAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CUSTOMER_SURNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="USERNAME" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="PASSWORD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="STAFF_USERS">
+          <Key>
+            <PropertyRef Name="STAFF_ID" />
+          </Key>
+          <Property Name="STAFF_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="USERNAME" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="PASSWORD" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TIMETABLE_RECORDS">
+          <Key>
+            <PropertyRef Name="Journey_No" />
+            <PropertyRef Name="Departure_Station" />
+            <PropertyRef Name="Arrival_Station" />
+            <PropertyRef Name="Departure_Time" />
+            <PropertyRef Name="Arrival_Time" />
+          </Key>
+          <Property Name="Journey_No" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="Departure_Station" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Arrival_Station" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Departure_Time" Type="DateTime" Nullable="false" />
+          <Property Name="Arrival_Time" Type="DateTime" Nullable="false" />
+          <Property Name="Journey_Comments" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="STAFF_ACCOUNT">
+            <EntityTypeMapping TypeName="Model.STAFF_ACCOUNT">
+              <MappingFragment StoreEntitySet="STAFF_ACCOUNT">
+                <ScalarProperty Name="STAFF_ID" ColumnName="STAFF_ID" />
+                <ScalarProperty Name="STAFF_ROLE" ColumnName="STAFF_ROLE" />
+                <ScalarProperty Name="STAFF_FORENAME" ColumnName="STAFF_FORENAME" />
+                <ScalarProperty Name="STAFF_SURNAME" ColumnName="STAFF_SURNAME" />
+                <ScalarProperty Name="DATE_OF_BIRTH" ColumnName="DATE_OF_BIRTH" />
+                <ScalarProperty Name="ADDRESS_LINE" ColumnName="ADDRESS_LINE" />
+                <ScalarProperty Name="POST_CODE" ColumnName="POST_CODE" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="VALIDATE_USER" FunctionName="Model.Store.VALIDATE_USER" />
+          <EntitySetMapping Name="CUSTOMERS">
+            <EntityTypeMapping TypeName="Model.CUSTOMER">
+              <MappingFragment StoreEntitySet="CUSTOMERS">
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="CUSTOMER_SURNAME" ColumnName="CUSTOMER_SURNAME" />
+                <ScalarProperty Name="CUSTOMER_FORENAME" ColumnName="CUSTOMER_FORENAME" />
+                <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STAFF_USERS">
+            <EntityTypeMapping TypeName="Model.STAFF_USERS">
+              <MappingFragment StoreEntitySet="STAFF_USERS">
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="STAFF_ID" ColumnName="STAFF_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIMETABLE_RECORDS">
+            <EntityTypeMapping TypeName="Model.TIMETABLE_RECORDS">
+              <MappingFragment StoreEntitySet="TIMETABLE_RECORDS">
+                <ScalarProperty Name="Journey_Comments" ColumnName="Journey Comments" />
+                <ScalarProperty Name="Arrival_Time" ColumnName="Arrival Time" />
+                <ScalarProperty Name="Departure_Time" ColumnName="Departure Time" />
+                <ScalarProperty Name="Arrival_Station" ColumnName="Arrival Station" />
+                <ScalarProperty Name="Departure_Station" ColumnName="Departure Station" />
+                <ScalarProperty Name="Journey_No" ColumnName="Journey No" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

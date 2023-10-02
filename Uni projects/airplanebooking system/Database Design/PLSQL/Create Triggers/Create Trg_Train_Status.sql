@@ -1,0 +1,13 @@
+create or replace TRIGGER TRG_TRAIN_STATUS
+    BEFORE INSERT OR UPDATE OF 
+    TRAIN_STATUS
+    ON TRAINS FOR EACH ROW
+    BEGIN
+    IF INSERTING THEN
+        IF :NEW.TRAIN_STATUS IS NULL OR :NEW.TRAIN_STATUS = '' THEN
+            SELECT 'Operational'
+            INTO :NEW.TRAIN_STATUS
+            FROM sys.dual;
+        END IF;
+    END IF;
+ END;

@@ -1,0 +1,22 @@
+Mobile App:
+Customer:
+Username: kebb
+Password: flow
+
+Web app:
+Admin
+Username: ALMAN
+Password: alman	
+
+Desktop:
+Guard
+Username: GLMAN	
+password: glman
+	
+Driver
+Username: DLMAN	
+password: dlman
+
+Cabin Crew:
+Username: CLMAN
+password: clman

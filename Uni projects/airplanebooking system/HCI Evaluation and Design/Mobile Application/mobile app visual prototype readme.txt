@@ -1,0 +1,2 @@
+In order to see the prototype you need to install the latest version of Adobe XD. You can download it from the following link "https://www.adobe.com/uk/products/xd.html".
+After the installation, open the file with Adobe XD and click on the run button to see the visual prototype in action.

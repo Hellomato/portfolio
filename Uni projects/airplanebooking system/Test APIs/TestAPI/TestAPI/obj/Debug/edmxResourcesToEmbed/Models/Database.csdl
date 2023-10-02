@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="STAFF_ACCOUNT">
+    <Key>
+      <PropertyRef Name="STAFF_ID" />
+    </Key>
+    <Property Name="STAFF_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="STAFF_ROLE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="STAFF_FORENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="STAFF_SURNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DATE_OF_BIRTH" Type="DateTime" />
+    <Property Name="ADDRESS_LINE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="POST_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="USERNAME" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="STAFF_ACCOUNT" EntityType="Self.STAFF_ACCOUNT" />
+    <FunctionImport Name="VALIDATE_USER">
+      <Parameter Name="P_USERNAME" Mode="In" Type="String" />
+      <Parameter Name="P_PASSWORD" Mode="In" Type="String" />
+      <Parameter Name="R_VALUE" Mode="Out" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="CUSTOMERS" EntityType="Model.CUSTOMER" />
+    <EntitySet Name="STAFF_USERS" EntityType="Model.STAFF_USERS" />
+    <EntitySet Name="TIMETABLE_RECORDS" EntityType="Model.TIMETABLE_RECORDS" />
+  </EntityContainer>
+  <EntityType Name="CUSTOMER">
+    <Key>
+      <PropertyRef Name="CUSTOMER_ID" />
+    </Key>
+    <Property Name="CUSTOMER_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="CUSTOMER_FORENAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CUSTOMER_SURNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="USERNAME" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="PASSWORD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="STAFF_USERS">
+    <Key>
+      <PropertyRef Name="STAFF_ID" />
+    </Key>
+    <Property Name="STAFF_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="USERNAME" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="PASSWORD" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TIMETABLE_RECORDS">
+    <Key>
+      <PropertyRef Name="Journey_No" />
+      <PropertyRef Name="Departure_Station" />
+      <PropertyRef Name="Arrival_Station" />
+      <PropertyRef Name="Departure_Time" />
+      <PropertyRef Name="Arrival_Time" />
+    </Key>
+    <Property Name="Journey_No" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="Departure_Station" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Arrival_Station" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Departure_Time" Type="DateTime" Nullable="false" />
+    <Property Name="Arrival_Time" Type="DateTime" Nullable="false" />
+    <Property Name="Journey_Comments" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>
