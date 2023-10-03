@@ -1,0 +1,22 @@
+/MARIE uses the character '/' as comment delimiter
+/MARIE will ignore all text after character '/' until the end of the line
+
+	Clear 
+ 	Load	A	/Set AC Register to variable A
+  	Add	B	/Add B with AC Register. AC is now A+B 
+  	Add	C	/Add C with AC Register. AC is now A+B+C 
+  	Add	D	/Add D with AC Register. AC is now A+B+C+D 
+  	Add	E	/Add E with AC Register. AC is now A+B+C+D+E 
+  	Store	Sum	/Store the AC Register to the Sum variable
+	Output		/Display the contents of AC into OUTPUT
+  	Halt		/Halt execution
+A,	DEC 	1   	/Variable A contains Decimal value 1
+B,	DEC 	2	/Variable B contains Decimal value 2
+C,	DEC 	3	/Variable C contains Decimal value 3
+D,	DEC	4	/Variable D contains Decimal value 4 
+E,	DEC 	5	/Variable E contains Decimal value 5 
+Sum, 	DEC 	0	/Variable Sum initially contains value 0
+
+/After this program executes, Sum will contain Decimal value 15
+/This is the expected result for our addition: 1+2+3+4+5=15
+

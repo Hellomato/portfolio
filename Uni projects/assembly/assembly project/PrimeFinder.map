@@ -1,0 +1,24 @@
+ --------------------
+ Symbol    | Location
+ ----------+---------
+ DO        |   023
+ Divide    |   017
+ ENDIF     |   014
+ ENDWHILE  |   029
+ Else      |   00D
+ EndWhile2 |   03B
+ If        |   007
+ IsPrime   |   042
+ M         |   03E
+ N         |   03C
+ One       |   041
+ Quotient  |   043
+ Remainder |   044
+ Root      |   03F
+ RootCount |   040
+ SQRT      |   02A
+ TempN     |   03D
+ While     |   01D
+ While1    |   005
+ While2    |   02C
+

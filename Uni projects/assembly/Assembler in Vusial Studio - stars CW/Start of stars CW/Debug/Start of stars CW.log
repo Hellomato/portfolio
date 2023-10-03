@@ -1,0 +1,11 @@
+﻿  Start of stars CW.cpp
+I:\old desktop\Assembler in Vusial Studio - stars CW\Start of stars CW\Start of stars CW.cpp(48,1): warning C4007: 'wmain': must be '__cdecl'
+I:\old desktop\Assembler in Vusial Studio - stars CW\Start of stars CW\Start of stars CW.cpp(59,1): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1274): message : see declaration of 'scanf'
+I:\old desktop\Assembler in Vusial Studio - stars CW\Start of stars CW\Start of stars CW.cpp(168,1): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1274): message : see declaration of 'scanf'
+I:\old desktop\Assembler in Vusial Studio - stars CW\Start of stars CW\Start of stars CW.cpp(169,1): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  stdafx.cpp
+  Generating Code...
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\stdio.h(1274): message : see declaration of 'scanf'
+  Start of stars CW.vcxproj -> I:\old desktop\Assembler in Vusial Studio - stars CW\Debug\Start of stars CW.exe

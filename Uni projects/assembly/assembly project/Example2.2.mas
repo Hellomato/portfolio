@@ -1,0 +1,10 @@
+	Load 	A		
+	Add 	ONE
+	JUMP 	S1		
+S2,	Add 	ONE
+	Store 	A
+	Halt
+S1,	Add 	A
+	Jump 	S2
+A,	HEX 	0023
+ONE,	HEX 	0001

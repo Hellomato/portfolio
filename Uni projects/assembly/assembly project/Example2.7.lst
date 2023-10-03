@@ -1,0 +1,28 @@
+     Assembly listing for: Example2.7.mas
+                Assembled: Mon Mar 07 13:57:17 GMT 2016
+
+000 1006 |             LOAD A               /AC=20
+001 2007 |             STORE Temp           /Temp=20
+002 0008 |             JNS Subroutine        
+003 2006 |             STORE A              /A=40
+004 6000 |             OUTPUT               /Display AC contents on screen
+005 7000 |             HALT                  
+006 0014 |  A          DEC 20                
+007 0000 |  Temp       DEC 0                 
+008 0000 |  Subroutine HEX 0                /Store return address here
+009 1007 |             LOAD Temp             
+00A 3007 |             ADD Temp              
+00B C008 |             JUMPI Subroutine      
+
+Assembly successful.
+
+         SYMBOL TABLE
+         ------------------------------------------------------
+          Symbol     | Defined | References 
+         ------------+---------+-------------------------------
+          A          |   006   | 000, 003
+          Subroutine |   008   | 002, 00B
+          Temp       |   007   | 001, 009, 00A
+         ------------------------------------------------------
+
+

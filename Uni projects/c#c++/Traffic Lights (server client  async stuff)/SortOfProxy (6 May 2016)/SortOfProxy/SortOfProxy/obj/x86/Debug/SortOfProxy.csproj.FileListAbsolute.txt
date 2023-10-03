@@ -1,0 +1,14 @@
+C:\Nigel\F\Nigel\Coarse Stuff\Robotics MSc\VC#\Sockets\SortOfProxy\SortOfProxy\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Nigel\F\Nigel\Coarse Stuff\Robotics MSc\VC#\Sockets\SortOfProxy\SortOfProxy\bin\Debug\SortOfProxy.exe
+C:\Nigel\F\Nigel\Coarse Stuff\Robotics MSc\VC#\Sockets\SortOfProxy\SortOfProxy\bin\Debug\SortOfProxy.pdb
+C:\Nigel\F\Nigel\Coarse Stuff\Robotics MSc\VC#\Sockets\SortOfProxy\SortOfProxy\obj\x86\Debug\SortOfProxy.exe
+C:\Nigel\F\Nigel\Coarse Stuff\Robotics MSc\VC#\Sockets\SortOfProxy\SortOfProxy\obj\x86\Debug\SortOfProxy.pdb
+C:\Nigel\Coarse Stuff\COM105\C# Stuff\Sockets\Traffic Lights\SortOfProxy\SortOfProxy\obj\x86\Debug\SortOfProxy.exe
+C:\Nigel\Coarse Stuff\COM105\C# Stuff\Sockets\Traffic Lights\SortOfProxy\SortOfProxy\obj\x86\Debug\SortOfProxy.pdb
+C:\Nigel\NET103\SortOfProxy\SortOfProxy\obj\x86\Debug\SortOfProxy.exe
+C:\Nigel\NET103\SortOfProxy\SortOfProxy\obj\x86\Debug\SortOfProxy.pdb
+C:\Nigel\NET103\SortOfProxy\SortOfProxy\bin\Debug\SortOfProxy.exe
+C:\Nigel\NET103\SortOfProxy\SortOfProxy\bin\Debug\SortOfProxy.pdb
+C:\Nigel\NET103\SortOfProxy\SortOfProxy\obj\x86\Debug\SortOfProxy.csprojResolveAssemblyReference.cache
+C:\Users\aedwards1\Desktop\Traffic Lights (Coursework)\SortOfProxy (6 May 2016)\SortOfProxy\SortOfProxy\obj\x86\Debug\SortOfProxy.exe
+C:\Users\aedwards1\Desktop\Traffic Lights (Coursework)\SortOfProxy (6 May 2016)\SortOfProxy\SortOfProxy\obj\x86\Debug\SortOfProxy.pdb

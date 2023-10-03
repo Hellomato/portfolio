@@ -1,0 +1,53 @@
+	CLEAR
+	INPUT	/take input
+	STORE	N
+	LOAD	M
+While1,	STORE	M	/start at Root(N)
+	JNS	Divide	/Divide N by M
+If,	LOAD	Remainder /If there is no remainder
+	SKIPCOND 400	/Meaning N is divisable by N
+	JUMP	Else
+	CLEAR	/Set isPrime to 0
+	STORE	IsPrime 
+	JUMP ENDIF	/end
+Else,	LOAD	N	/if N - (M + 1) = 0
+	SUBT	One
+	SUBT	M
+	SKIPCOND 800	
+	JUMP ENDIF
+	LOAD	M	/add one to M
+	ADD	One	/Loop again
+	JUMP	While1
+ENDIF,	LOAD IsPrime	/Load contents of isprime
+	OUTPUT	/output
+	HALT
+
+/DIVIDE SUB
+Divide,	HEX	0000
+	LOAD	M
+	STORE Remainder	/store incase B > A
+	LOAD	N
+	STORE	TempN
+While,	LOAD	TempN	/Start loop
+	SUBT	M
+	SKIPCOND 000	/If A - B = 0
+	JUMP DO		/Loop one more time
+	SKIPCOND 800	/If A - B > 0
+	JUMP ENDWHILE	/End loop
+DO,	STORE	TempN	/STORE A-B in A
+	STORE	Remainder/Store whats left over in Remainder
+	LOAD	Quotient 
+	ADD 	One	/Add one to quotient
+	STORE	Quotient
+	JUMP	While	/loop again
+ENDWHILE, JUMPI Divide
+
+
+N,	DEC	13
+TempN,	DEC	0
+M,	DEC	2
+One,	DEC	1
+IsPrime,	DEC	1
+Quotient,	DEC	0
+Remainder,	DEC	0
+	

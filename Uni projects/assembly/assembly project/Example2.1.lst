@@ -1,0 +1,32 @@
+     Assembly listing for: Example2.1.mas
+                Assembled: Sat Feb 27 00:59:30 GMT 2016
+
+         |                          /MARIE uses the character '/' as comment delimiter
+         |                          /MARIE will ignore all text after character '/' until the end of the line
+         |                          
+000 A000 |         CLEAR             
+001 1006 |         LOAD A           /Set AC Register to variable A
+002 3007 |         ADD B            /Add B with AC Register. AC is now A+B 
+003 2008 |         STORE Sum        /Store the AC Register to the Sum variable
+004 6000 |         OUTPUT           /Display the contents of AC into OUTPUT
+005 7000 |         HALT             /Halt execution
+006 0009 |  A      DEC 9            /Variable A contains Decimal value 9
+007 000A |  B      DEC 10           /Variable B contains Decimal value 10 
+008 0000 |  Sum    DEC 0            /Variable Sum initially contains value 0
+         |                          
+         |                          /After this program executes, Sum will contain Decimal value 19
+         |                          /This is the expected result for our addition: 9+10=19
+         |                          
+
+Assembly successful.
+
+         SYMBOL TABLE
+         --------------------------------------------------
+          Symbol | Defined | References 
+         --------+---------+-------------------------------
+          A      |   006   | 001
+          B      |   007   | 002
+          Sum    |   008   | 003
+         --------------------------------------------------
+
+

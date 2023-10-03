@@ -1,0 +1,43 @@
+     Assembly listing for: text.mas
+                Assembled: Sat Apr 28 16:06:36 BST 2018
+
+000 1012 |  Start  LOAD A            
+001 4013 |         SUBT B            
+002 8800 |         SKIPCOND 800      
+003 900F |         JUMP End          
+004 1015 |         LOAD Temp         
+005 3016 |         ADD One           
+006 3016 |         ADD One           
+007 2015 |         STORE Temp        
+008 1013 |         LOAD B            
+009 3015 |         ADD Temp          
+00A 2013 |         STORE B           
+00B 1014 |         LOAD Count        
+00C 3016 |         ADD One           
+00D 2014 |         STORE Count       
+00E 9000 |         JUMP Start        
+00F 1014 |  End    LOAD Count        
+010 6000 |         OUTPUT            
+011 7000 |         HALT              
+012 0015 |  A      DEC 21            
+013 0001 |  B      DEC 1             
+014 0000 |  Count  DEC 0             
+015 0000 |  Temp   DEC 0             
+016 0001 |  One    DEC 1             
+
+Assembly successful.
+
+         SYMBOL TABLE
+         --------------------------------------------------
+          Symbol | Defined | References 
+         --------+---------+-------------------------------
+          A      |   012   | 000
+          B      |   013   | 001, 008, 00A
+          Count  |   014   | 00B, 00D, 00F
+          End    |   00F   | 003
+          One    |   016   | 005, 006, 00C
+          Start  |   000   | 00E
+          Temp   |   015   | 004, 007, 009
+         --------------------------------------------------
+
+

@@ -1,0 +1,51 @@
+     Assembly listing for: Divide Sub.mas
+                Assembled: Wed Apr 18 23:10:41 BST 2018
+
+000 A000 |  Divide    CLEAR               /Clear memory
+001 5000 |            INPUT               /Number to be divided
+002 2017 |            STORE A              
+003 5000 |            INPUT               /Number to divide by
+004 2018 |            STORE B              
+005 201B |            STORE Remainder     /store incase B > A
+006 1017 |  While     LOAD A              /Start loop
+007 4018 |            SUBT B               
+008 8000 |            SKIPCOND 000        /If A - B = 0
+009 900C |            JUMP DO             /Loop one more time
+00A 8800 |            SKIPCOND 800        /If A - B > 0
+00B 9012 |            JUMP ENDWHILE       /End loop
+00C 2017 |  DO        STORE A             /STORE A-B in A
+00D 201B |            STORE Remainder     /Store whats left over in Remainder
+00E 101A |            LOAD Quotient        
+00F 3019 |            ADD One             /Add one to quotient
+010 201A |            STORE Quotient       
+011 9006 |            JUMP While          /loop again
+012 101A |  ENDWHILE  LOAD Quotient        
+013 6000 |            OUTPUT              /Output Quotient
+014 101B |            LOAD Remainder       
+015 6000 |            OUTPUT              /output Remainder
+016 7000 |            HALT                 
+017 0000 |  A         DEC 0                
+018 0000 |  B         DEC 0                
+019 0001 |  One       DEC 1                
+01A 0000 |  Quotient  DEC 0                
+01B 0000 |  Remainder DEC 0                
+         |                                	
+
+Assembly successful.
+
+         SYMBOL TABLE
+         -----------------------------------------------------
+          Symbol    | Defined | References 
+         -----------+---------+-------------------------------
+          A         |   017   | 002, 006, 00C
+          B         |   018   | 004, 007
+          DO        |   00C   | 009
+          Divide    |   000   | 
+          ENDWHILE  |   012   | 00B
+          One       |   019   | 00F
+          Quotient  |   01A   | 00E, 010, 012
+          Remainder |   01B   | 005, 00D, 014
+          While     |   006   | 011
+         -----------------------------------------------------
+
+

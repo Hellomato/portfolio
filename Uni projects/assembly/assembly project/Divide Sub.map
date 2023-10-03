@@ -1,0 +1,13 @@
+ --------------------
+ Symbol    | Location
+ ----------+---------
+ A         |   017
+ B         |   018
+ DO        |   00C
+ Divide    |   000
+ ENDWHILE  |   012
+ One       |   019
+ Quotient  |   01A
+ Remainder |   01B
+ While     |   006
+

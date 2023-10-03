@@ -1,0 +1,81 @@
+     Assembly listing for: PrimeFinder2.mas
+                Assembled: Mon Apr 23 16:05:36 BST 2018
+
+000 A000 |            CLEAR                
+001 5000 |            INPUT               /take input
+002 2029 |            STORE N              
+003 102B |            LOAD M               
+004 202B |  While1    STORE M             /start at Root(N)
+005 0017 |            JNS Divide          /Divide N by M
+006 102F |  If        LOAD Remainder      /If there is no remainder
+007 8400 |            SKIPCOND 400        /Meaning N is divisable by N
+008 900C |            JUMP Else            
+009 A000 |            CLEAR               /Set isPrime to 0
+00A 202D |            STORE IsPrime        
+00B 9014 |            JUMP ENDIF          /end
+00C 1029 |  Else      LOAD N              /if N - (M + 1) = 0
+00D 402C |            SUBT One             
+00E 402B |            SUBT M               
+00F 8800 |            SKIPCOND 800         
+010 9014 |            JUMP ENDIF           
+011 102B |            LOAD M              /add one to M
+012 302C |            ADD One             /Loop again
+013 9004 |            JUMP While1          
+014 102D |  ENDIF     LOAD IsPrime        /Load contents of isprime
+015 6000 |            OUTPUT              /output
+016 7000 |            HALT                 
+         |                                
+         |                                /DIVIDE SUB
+017 0000 |  Divide    HEX 0000             
+018 102B |            LOAD M               
+019 202F |            STORE Remainder     /store incase B > A
+01A 1029 |            LOAD N               
+01B 202A |            STORE TempN          
+01C 102A |  While     LOAD TempN          /Start loop
+01D 402B |            SUBT M               
+01E 8000 |            SKIPCOND 000        /If A - B = 0
+01F 9022 |            JUMP DO             /Loop one more time
+020 8800 |            SKIPCOND 800        /If A - B > 0
+021 9028 |            JUMP ENDWHILE       /End loop
+022 202A |  DO        STORE TempN         /STORE A-B in A
+023 202F |            STORE Remainder     /Store whats left over in Remainder
+024 102E |            LOAD Quotient        
+025 302C |            ADD One             /Add one to quotient
+026 202E |            STORE Quotient       
+027 901C |            JUMP While          /loop again
+028 C017 |  ENDWHILE  JUMPI Divide         
+         |                                
+         |                                
+029 000D |  N         DEC 13               
+02A 0000 |  TempN     DEC 0                
+02B 0002 |  M         DEC 2                
+02C 0001 |  One       DEC 1                
+02D 0001 |  IsPrime   DEC 1                
+02E 0000 |  Quotient  DEC 0                
+02F 0000 |  Remainder DEC 0                
+         |                                	
+
+Assembly successful.
+
+         SYMBOL TABLE
+         -----------------------------------------------------
+          Symbol    | Defined | References 
+         -----------+---------+-------------------------------
+          DO        |   022   | 01F
+          Divide    |   017   | 005, 028
+          ENDIF     |   014   | 00B, 010
+          ENDWHILE  |   028   | 021
+          Else      |   00C   | 008
+          If        |   006   | 
+          IsPrime   |   02D   | 00A, 014
+          M         |   02B   | 003, 004, 00E, 011, 018, 01D
+          N         |   029   | 002, 00C, 01A
+          One       |   02C   | 00D, 012, 025
+          Quotient  |   02E   | 024, 026
+          Remainder |   02F   | 006, 019, 023
+          TempN     |   02A   | 01B, 01C, 022
+          While     |   01C   | 027
+          While1    |   004   | 013
+         -----------------------------------------------------
+
+

@@ -1,0 +1,29 @@
+Divide,	CLEAR	/Clear memory
+	INPUT	/Number to be divided
+	STORE A 
+	INPUT	/Number to divide by
+	STORE B
+	STORE Remainder	/store incase B > A
+While,	LOAD	A	/Start loop
+	SUBT	B
+	SKIPCOND 000	/If A - B = 0
+	JUMP DO		/Loop one more time
+	SKIPCOND 800	/If A - B > 0
+	JUMP ENDWHILE	/End loop
+DO,	STORE	A	/STORE A-B in A
+	STORE	Remainder/Store whats left over in Remainder
+	LOAD	Quotient 
+	ADD 	One	/Add one to quotient
+	STORE	Quotient
+	JUMP	While	/loop again
+ENDWHILE, LOAD	Quotient
+	OUTPUT	/Output Quotient
+	LOAD	Remainder
+	OUTPUT	/output Remainder
+	HALT
+A,	DEC	0
+B,	DEC	0
+One,	DEC	1
+Quotient,	DEC	0
+Remainder,	DEC	0
+	

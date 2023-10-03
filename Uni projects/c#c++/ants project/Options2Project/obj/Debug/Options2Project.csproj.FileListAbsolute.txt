@@ -1,0 +1,31 @@
+C:\Users\asdzx\Desktop\SOFT152AssignmentOption2\Options2Project\bin\Debug\SteeringProject.exe.config
+C:\Users\asdzx\Desktop\SOFT152AssignmentOption2\Options2Project\bin\Debug\SteeringProject.exe
+C:\Users\asdzx\Desktop\SOFT152AssignmentOption2\Options2Project\bin\Debug\SteeringProject.pdb
+C:\Users\asdzx\Desktop\SOFT152AssignmentOption2\Options2Project\bin\Debug\SteeringLibrary.dll
+C:\Users\asdzx\Desktop\SOFT152AssignmentOption2\Options2Project\obj\Debug\Options2Project.csprojResolveAssemblyReference.cache
+C:\Users\asdzx\Desktop\SOFT152AssignmentOption2\Options2Project\obj\Debug\SteeringProject.Properties.Resources.resources
+C:\Users\asdzx\Desktop\SOFT152AssignmentOption2\Options2Project\obj\Debug\SOFT152Steering.AntFoodForm.resources
+C:\Users\asdzx\Desktop\SOFT152AssignmentOption2\Options2Project\obj\Debug\Options2Project.csproj.GenerateResource.Cache
+C:\Users\asdzx\Desktop\SOFT152AssignmentOption2\Options2Project\obj\Debug\SteeringProject.exe
+C:\Users\asdzx\Desktop\SOFT152AssignmentOption2\Options2Project\obj\Debug\SteeringProject.pdb
+D:\SOFT152AssignmentOption2\Options2Project\bin\Debug\SteeringProject.exe.config
+D:\SOFT152AssignmentOption2\Options2Project\obj\Debug\SteeringProject.exe
+D:\SOFT152AssignmentOption2\Options2Project\obj\Debug\SteeringProject.pdb
+D:\SOFT152AssignmentOption2\Options2Project\bin\Debug\SteeringProject.exe
+D:\SOFT152AssignmentOption2\Options2Project\bin\Debug\SteeringProject.pdb
+D:\SOFT152AssignmentOption2\Options2Project\bin\Debug\SteeringLibrary.dll
+D:\SOFT152AssignmentOption2\Options2Project\obj\Debug\Options2Project.csprojResolveAssemblyReference.cache
+D:\SOFT152AssignmentOption2\Options2Project\obj\Debug\SteeringProject.Properties.Resources.resources
+D:\SOFT152AssignmentOption2\Options2Project\obj\Debug\SOFT152Steering.AntFoodForm.resources
+D:\SOFT152AssignmentOption2\Options2Project\obj\Debug\Options2Project.csproj.GenerateResource.Cache
+I:\old desktop\SOFT152AssignmentOption2\Options2Project\bin\Debug\SteeringProject.exe.config
+I:\old desktop\SOFT152AssignmentOption2\Options2Project\bin\Debug\SteeringProject.exe
+I:\old desktop\SOFT152AssignmentOption2\Options2Project\bin\Debug\SteeringProject.pdb
+I:\old desktop\SOFT152AssignmentOption2\Options2Project\bin\Debug\SteeringLibrary.dll
+I:\old desktop\SOFT152AssignmentOption2\Options2Project\obj\Debug\Options2Project.csprojAssemblyReference.cache
+I:\old desktop\SOFT152AssignmentOption2\Options2Project\obj\Debug\SteeringProject.Properties.Resources.resources
+I:\old desktop\SOFT152AssignmentOption2\Options2Project\obj\Debug\SOFT152Steering.AntFoodForm.resources
+I:\old desktop\SOFT152AssignmentOption2\Options2Project\obj\Debug\Options2Project.csproj.GenerateResource.cache
+I:\old desktop\SOFT152AssignmentOption2\Options2Project\obj\Debug\Options2Project.csproj.CopyComplete
+I:\old desktop\SOFT152AssignmentOption2\Options2Project\obj\Debug\SteeringProject.exe
+I:\old desktop\SOFT152AssignmentOption2\Options2Project\obj\Debug\SteeringProject.pdb

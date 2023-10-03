@@ -1,0 +1,27 @@
+     Assembly listing for: Example2.2.mas
+                Assembled: Mon Mar 07 13:49:19 GMT 2016
+
+000 1008 |         LOAD A            
+001 3009 |         ADD ONE           
+002 9006 |         JUMP S1           
+003 3009 |  S2     ADD ONE           
+004 2008 |         STORE A           
+005 7000 |         HALT              
+006 3008 |  S1     ADD A             
+007 9003 |         JUMP S2           
+008 0023 |  A      HEX 0023          
+009 0001 |  ONE    HEX 0001          
+
+Assembly successful.
+
+         SYMBOL TABLE
+         --------------------------------------------------
+          Symbol | Defined | References 
+         --------+---------+-------------------------------
+          A      |   008   | 000, 004, 006
+          ONE    |   009   | 001, 003
+          S1     |   006   | 002
+          S2     |   003   | 007
+         --------------------------------------------------
+
+

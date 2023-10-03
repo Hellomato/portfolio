@@ -1,0 +1,106 @@
+<Project>
+  <Name>Ants Project</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Class Diagram</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Food</Name>
+        <Access>Public</Access>
+        <Location left="541" top="16" />
+        <Size width="230" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public int Uses { get; set; }</Member>
+        <Member type="Property">public SOFT152Vector Position { get; set; }</Member>
+        <Member type="Constructor">public Food(SOFT152Vector v, int uses)</Member>
+        <Member type="Method">public void Decrease()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>AntAgent</Name>
+        <Access>Public</Access>
+        <Location left="501" top="257" />
+        <Size width="397" height="502" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">SOFT152Vector agentPosition</Member>
+        <Member type="Field">Random randomNumberGenerator</Member>
+        <Member type="Field">SOFT152Vector wanderPosition</Member>
+        <Member type="Field">Rectangle worldBounds</Member>
+        <Member type="Property">public double AgentSpeed { get; set; }</Member>
+        <Member type="Property">public double ApproachRadius { get; set; }</Member>
+        <Member type="Property">public SOFT152Vector AgentPosition { get; set; }</Member>
+        <Member type="Property">public double AvoidDistance { get; set; }</Member>
+        <Member type="Property">public SOFT152Vector FoodPos { get; set; }</Member>
+        <Member type="Property">public SOFT152Vector NestPos { get; set; }</Member>
+        <Member type="Property">public bool HasFood { get; set; }</Member>
+        <Member type="Property">public bool ShouldStayInWorldBounds { get; set; }</Member>
+        <Member type="Property">public double WanderLimits { get; set; }</Member>
+        <Member type="Constructor">public AntAgent(SOFT152Vector position, Random random)</Member>
+        <Member type="Constructor">public AntAgent(SOFT152Vector position, Random random, Rectangle bounds)</Member>
+        <Member type="Method">private void InitialiseAgent()</Member>
+        <Member type="Method">private void ChanceToForget()</Member>
+        <Member type="Method">public void Approach(SOFT152Vector objectPosition)</Member>
+        <Member type="Method">public void FleeFrom(SOFT152Vector objectPosition)</Member>
+        <Member type="Method">public void Wander()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>AntFoodForm</Name>
+        <Access>Public</Access>
+        <Location left="23" top="16" />
+        <Size width="385" height="621" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int antCollision</Member>
+        <Member type="Field">List&lt;AntAgent&gt; antList</Member>
+        <Member type="Field">float antSize</Member>
+        <Member type="Field">int antVision</Member>
+        <Member type="Field">Bitmap BackgroundImage</Member>
+        <Member type="Field">List&lt;Food&gt; foodList</Member>
+        <Member type="Field">float foodSize</Member>
+        <Member type="Field">List&lt;SOFT152Vector&gt; nestList</Member>
+        <Member type="Field">float nestSize</Member>
+        <Member type="Field">Random randomGenerator</Member>
+        <Member type="Field">List&lt;AntAgent&gt; robberAntList</Member>
+        <Member type="Field">List&lt;SOFT152Vector&gt; robberAntNestList</Member>
+        <Member type="Constructor">public AntFoodForm()</Member>
+        <Member type="Method">private void CreateAnts()</Member>
+        <Member type="Method">private void CreateBackgroundImage()</Member>
+        <Member type="Method">private void timer_Tick(Object o, EventArgs e)</Member>
+        <Member type="Method">private void DrawThingsDoubleBuffering()</Member>
+        <Member type="Method">private void drawAnts(Graphics g, Brush b, List&lt;AntAgent&gt; data)</Member>
+        <Member type="Method">private void drawItem(Graphics g, Brush b, SOFT152Vector data, float size)</Member>
+        <Member type="Method">private void AntLogic()</Member>
+        <Member type="Method">private void RobberAntLogic()</Member>
+        <Member type="Method">private SOFT152Vector GetRandomPos(float size)</Member>
+        <Member type="Method">private void stopButton_Click(object o, EventArgs e)</Member>
+        <Member type="Method">private void startButton_Click(object o, EventArgs e)</Member>
+        <Member type="Method">private void drawingPanel_MouseDown(object o, MouseEventArgs e)</Member>
+        <Member type="Method">private void CreateNest(SOFT152Vector vt)</Member>
+        <Member type="Method">private void CreateFood(SOFT152Vector v)</Member>
+        <Member type="Method">private void CreateRobberAntNest(SOFT152Vector v)</Member>
+        <Member type="Method">private void CreateRobberAnts(SOFT152Vector nest)</Member>
+        <Member type="Method">private void resetButton_Click(object o, EventArgs e)</Member>
+        <Member type="Method">private void InitializeComponent()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Association" first="2" second="0">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="2" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>

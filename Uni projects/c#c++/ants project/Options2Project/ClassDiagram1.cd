@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SOFT152Steering.AntAgent">
+    <Position X="1" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>CAQAAEggAIBAYAAAAAAAAABAIgCgAAAQEAAACAABAAk=</HashCode>
+      <FileName>AntAgent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SOFT152Steering.AntFoodForm">
+    <Position X="4.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAcQmAAqAOAAADQAkgapBABCQAAQEARQQCQAGAAASAA=</HashCode>
+      <FileName>AntFoodForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SOFT152Steering.Food">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAABAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Food.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SOFT152Steering.Program">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SOFT152Steering.Properties.Resources">
+    <Position X="8.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SOFT152Steering.Properties.Settings">
+    <Position X="9.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,78 @@
+	CLEAR
+	INPUT	/take input
+	STORE	N
+	JNS	SQRT /Calculate SQRT
+	LOAD	M
+While1,	STORE	M	/start at 2
+	JNS	Divide	/Divide N by M
+If,	LOAD	Remainder /If there is no remainder
+	SKIPCOND 400	/Meaning N is divisable by M
+	JUMP	Else
+	CLEAR	/Set isPrime to 0
+	STORE	IsPrime 
+	JUMP ENDIF	/end
+Else,	LOAD	M	/IF M < Root
+	SUBT	Root	
+	SKIPCOND 000	
+	JUMP ENDIF
+	LOAD	M	/add one to M
+	ADD	One	/Loop again
+	JUMP	While1
+ENDIF,	LOAD IsPrime	/Load contents of isprime
+	OUTPUT	/output
+	HALT
+
+/DIVIDE SUB
+Divide,	HEX	0000
+	CLEAR
+	LOAD	M
+	STORE Remainder	/store incase B > A
+	LOAD	N
+	STORE	TempN
+While,	LOAD	TempN	/Start loop
+	SUBT	M
+	SKIPCOND 000	/If A - B = 0
+	JUMP DO		/Loop one more time
+	SKIPCOND 800	/If A - B > 0
+	JUMP ENDWHILE	/End loop
+DO,	STORE	TempN	/STORE A-B in A
+	STORE	Remainder/Store whats left over in Remainder
+	LOAD	Quotient 
+	ADD 	One	/Add one to quotient
+	STORE	Quotient
+	JUMP	While	/loop again
+ENDWHILE, JUMPI Divide
+
+/SQRT SUB
+/This SUB finds the closest square number to N
+/and uses this as the lower bound for the SQRT of N
+SQRT,	HEX	0000
+	CLEAR
+While2,	LOAD	RootCount /If RootCounter < N
+	SUBT	N
+	SKIPCOND 000
+	JUMP 	EndWhile2
+	LOAD	TempN	/add 2 to TempN
+	ADD	One
+	ADD	One
+	STORE	TempN	
+	LOAD	RootCount 
+	ADD	TempN	/Add Temp N to rootcount
+	STORE	RootCount /Leading to the series 1 + 3 + 5 + 7 ...
+	LOAD	Root	
+	ADD	One	/add one to root
+	STORE	Root
+	JUMP	While2
+EndWhile2,	JUMPI	SQRT
+
+
+N,	DEC	0
+TempN,	DEC	1
+M,	DEC	2
+Root,	DEC	1	/start root at 1 to include upper bound
+RootCount,	DEC	1
+One,	DEC	1
+IsPrime,	DEC	1
+Quotient,	DEC	0
+Remainder,	DEC	0
+	

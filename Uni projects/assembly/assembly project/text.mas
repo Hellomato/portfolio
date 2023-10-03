@@ -1,0 +1,23 @@
+Start,	LOAD	A
+	SUBT	B
+	SKIPCOND 800
+	JUMP	End
+	LOAD	Temp
+	ADD	One
+	ADD	One
+	STORE	Temp
+	Load	B
+	ADD	Temp
+	STORE	B
+	LOAD	Count
+	ADD	One
+	STORE	Count
+	JUMP	Start
+End,	Load	Count
+	Output
+	Halt
+A,	DEC	21
+B,	DEC	1
+Count,	DEC	0
+Temp,	DEC	0
+One,	DEC	1

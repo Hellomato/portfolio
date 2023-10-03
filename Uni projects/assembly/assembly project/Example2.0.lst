@@ -1,0 +1,41 @@
+     Assembly listing for: Example2.0.mas
+                Assembled: Mon Mar 07 13:40:01 GMT 2016
+
+         |                          /MARIE uses the character '/' as comment delimiter
+         |                          /MARIE will ignore all text after character '/' until the end of the line
+         |                          
+000 A000 |         CLEAR             
+001 1009 |         LOAD A           /Set AC Register to variable A
+002 300A |         ADD B            /Add B with AC Register. AC is now A+B 
+003 300B |         ADD C            /Add C with AC Register. AC is now A+B+C 
+004 300C |         ADD D            /Add D with AC Register. AC is now A+B+C+D 
+005 300D |         ADD E            /Add E with AC Register. AC is now A+B+C+D+E 
+006 200E |         STORE Sum        /Store the AC Register to the Sum variable
+007 6000 |         OUTPUT           /Display the contents of AC into OUTPUT
+008 7000 |         HALT             /Halt execution
+009 0001 |  A      DEC 1            /Variable A contains Decimal value 1
+00A 0002 |  B      DEC 2            /Variable B contains Decimal value 2
+00B 0003 |  C      DEC 3            /Variable C contains Decimal value 3
+00C 0004 |  D      DEC 4            /Variable D contains Decimal value 4 
+00D 0005 |  E      DEC 5            /Variable E contains Decimal value 5 
+00E 0000 |  Sum    DEC 0            /Variable Sum initially contains value 0
+         |                          
+         |                          /After this program executes, Sum will contain Decimal value 15
+         |                          /This is the expected result for our addition: 1+2+3+4+5=15
+         |                          
+
+Assembly successful.
+
+         SYMBOL TABLE
+         --------------------------------------------------
+          Symbol | Defined | References 
+         --------+---------+-------------------------------
+          A      |   009   | 001
+          B      |   00A   | 002
+          C      |   00B   | 003
+          D      |   00C   | 004
+          E      |   00D   | 005
+          Sum    |   00E   | 006
+         --------------------------------------------------
+
+

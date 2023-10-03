@@ -1,0 +1,71 @@
+	/CLEAR
+	/INPUT	/take input
+	/STORE	N
+	JNS	SQRT
+	LOAD	M
+While1,	STORE	M	/start at Root(N)
+	JNS	Divide	/Divide N by M
+If,	LOAD	Remainder /If there is no remainder
+	SKIPCOND 400	/Meaning N is divisable by N
+	JUMP	Else
+	CLEAR	/Set isPrime to 0
+	STORE	IsPrime 
+	JUMP ENDIF	/end
+Else,	LOAD	M	/if N - (M + 1) = 0
+	SUBT	Root
+	SKIPCOND 000	
+	JUMP ENDIF
+	LOAD	M	/add one to M
+	ADD	One	/Loop again
+	JUMP	While1
+ENDIF,	LOAD IsPrime	/Load contents of isprime
+	OUTPUT	/output
+	HALT
+
+/DIVIDE SUB
+Divide,	HEX	0000
+	LOAD	M
+	STORE Remainder	/store incase B > A
+	LOAD	N
+	STORE	TempN
+While,	LOAD	TempN	/Start loop
+	SUBT	M
+	SKIPCOND 000	/If A - B = 0
+	JUMP DO		/Loop one more time
+	SKIPCOND 800	/If A - B > 0
+	JUMP ENDWHILE	/End loop
+DO,	STORE	TempN	/STORE A-B in A
+	STORE	Remainder/Store whats left over in Remainder
+	LOAD	Quotient 
+	ADD 	One	/Add one to quotient
+	STORE	Quotient
+	JUMP	While	/loop again
+ENDWHILE, JUMPI Divide
+
+/SQRT SUB
+SQRT,	HEX	0000
+While2,	LOAD	RootCount
+	SUBT	N
+	SKIPCOND 000
+	JUMP 	EndWhile2
+	LOAD	RootCount
+	ADD	Two
+	STORE	RootCount
+	LOAD	Root
+	ADD	One
+	STORE	Root
+	JUMP	While2
+EndWhile2,	JUMPI	SQRT
+
+
+N,	DEC	13
+TempN,	DEC	0
+M,	DEC	2
+Root,	DEC	0
+RootCount,	DEC	1
+One,	DEC	1
+Two,	DEC	2
+IsPrime,	DEC	1
+Quotient,	DEC	0
+Remainder,	DEC	0
+	

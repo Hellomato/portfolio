@@ -1,0 +1,12 @@
+		Load 	A		/AC=20
+		Store 	Temp		/Temp=20
+		JNS 	Subroutine		
+		Store 	A		/A=40
+		Output			/Display AC contents on screen
+		Halt
+A,		DEC 	20
+Temp,		DEC	0
+Subroutine,	HEX 	0		/Store return address here
+		Load 	Temp		
+		Add	Temp		
+		JumpI	Subroutine

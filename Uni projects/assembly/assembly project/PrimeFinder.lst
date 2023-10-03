@@ -1,0 +1,111 @@
+     Assembly listing for: PrimeFinder.mas
+                Assembled: Sat Apr 28 16:27:29 BST 2018
+
+000 A000 |            CLEAR                
+001 5000 |            INPUT               /take input
+002 203C |            STORE N              
+003 002A |            JNS SQRT            /Calculate SQRT
+004 103E |            LOAD M               
+005 203E |  While1    STORE M             /start at 2
+006 0017 |            JNS Divide          /Divide N by M
+007 1044 |  If        LOAD Remainder      /If there is no remainder
+008 8400 |            SKIPCOND 400        /Meaning N is divisable by M
+009 900D |            JUMP Else            
+00A A000 |            CLEAR               /Set isPrime to 0
+00B 2042 |            STORE IsPrime        
+00C 9014 |            JUMP ENDIF          /end
+00D 103E |  Else      LOAD M              /IF M < Root
+00E 403F |            SUBT Root            
+00F 8000 |            SKIPCOND 000         
+010 9014 |            JUMP ENDIF           
+011 103E |            LOAD M              /add one to M
+012 3041 |            ADD One             /Loop again
+013 9005 |            JUMP While1          
+014 1042 |  ENDIF     LOAD IsPrime        /Load contents of isprime
+015 6000 |            OUTPUT              /output
+016 7000 |            HALT                 
+         |                                
+         |                                /DIVIDE SUB
+017 0000 |  Divide    HEX 0000             
+018 A000 |            CLEAR                
+019 103E |            LOAD M               
+01A 2044 |            STORE Remainder     /store incase B > A
+01B 103C |            LOAD N               
+01C 203D |            STORE TempN          
+01D 103D |  While     LOAD TempN          /Start loop
+01E 403E |            SUBT M               
+01F 8000 |            SKIPCOND 000        /If A - B = 0
+020 9023 |            JUMP DO             /Loop one more time
+021 8800 |            SKIPCOND 800        /If A - B > 0
+022 9029 |            JUMP ENDWHILE       /End loop
+023 203D |  DO        STORE TempN         /STORE A-B in A
+024 2044 |            STORE Remainder     /Store whats left over in Remainder
+025 1043 |            LOAD Quotient        
+026 3041 |            ADD One             /Add one to quotient
+027 2043 |            STORE Quotient       
+028 901D |            JUMP While          /loop again
+029 C017 |  ENDWHILE  JUMPI Divide         
+         |                                
+         |                                /SQRT SUB
+         |                                /This SUB finds the closest square number to N
+         |                                /and uses this as the lower bound for the SQRT of N
+02A 0000 |  SQRT      HEX 0000             
+02B A000 |            CLEAR                
+02C 1040 |  While2    LOAD RootCount      /If RootCounter < N
+02D 403C |            SUBT N               
+02E 8000 |            SKIPCOND 000         
+02F 903B |            JUMP EndWhile2       
+030 103D |            LOAD TempN          /add 2 to TempN
+031 3041 |            ADD One              
+032 3041 |            ADD One              
+033 203D |            STORE TempN          
+034 1040 |            LOAD RootCount       
+035 303D |            ADD TempN           /Add Temp N to rootcount
+036 2040 |            STORE RootCount     /Leading to the series 1 + 3 + 5 + 7 ...
+037 103F |            LOAD Root            
+038 3041 |            ADD One             /add one to root
+039 203F |            STORE Root           
+03A 902C |            JUMP While2          
+03B C02A |  EndWhile2 JUMPI SQRT           
+         |                                
+         |                                
+03C 0000 |  N         DEC 0                
+03D 0001 |  TempN     DEC 1                
+03E 0002 |  M         DEC 2                
+03F 0001 |  Root      DEC 1               /start root at 1 to include upper bound
+040 0001 |  RootCount DEC 1                
+041 0001 |  One       DEC 1                
+042 0001 |  IsPrime   DEC 1                
+043 0000 |  Quotient  DEC 0                
+044 0000 |  Remainder DEC 0                
+         |                                	
+
+Assembly successful.
+
+         SYMBOL TABLE
+         -----------------------------------------------------
+          Symbol    | Defined | References 
+         -----------+---------+-------------------------------
+          DO        |   023   | 020
+          Divide    |   017   | 006, 029
+          ENDIF     |   014   | 00C, 010
+          ENDWHILE  |   029   | 022
+          Else      |   00D   | 009
+          EndWhile2 |   03B   | 02F
+          If        |   007   | 
+          IsPrime   |   042   | 00B, 014
+          M         |   03E   | 004, 005, 00D, 011, 019, 01E
+          N         |   03C   | 002, 01B, 02D
+          One       |   041   | 012, 026, 031, 032, 038
+          Quotient  |   043   | 025, 027
+          Remainder |   044   | 007, 01A, 024
+          Root      |   03F   | 00E, 037, 039
+          RootCount |   040   | 02C, 034, 036
+          SQRT      |   02A   | 003, 03B
+          TempN     |   03D   | 01C, 01D, 023, 030, 033, 035
+          While     |   01D   | 028
+          While1    |   005   | 013
+          While2    |   02C   | 03A
+         -----------------------------------------------------
+
+

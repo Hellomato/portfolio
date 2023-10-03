@@ -1,0 +1,13 @@
+/MARIE will consider characters after ‘/‘ as comments
+If,	Load 		A 	/Load A
+ 	Skipcond 	800 	/If AC>0, skip next instruction
+	Jump 		Endif 	/Jump to Else if AC <> 0
+Then, 	Load 		A 	/Reload X so it can be increased
+ 	Add 		One 	/AC=A+1
+ 	Store 		A 	/Store the new value in A.
+	Output			/Display AC contents on screen
+Endif, 	Halt 			/Terminate program
+A, 	Dec 		10 	/A=10
+One, 	Dec 		1 	/One=1
+
+/After this program executes, A will become 11 
