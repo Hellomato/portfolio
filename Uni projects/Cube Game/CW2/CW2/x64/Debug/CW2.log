@@ -1,0 +1,55 @@
+﻿  main.cpp
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(63,24): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(63,24): warning C4244:         with
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(63,24): warning C4244:         [
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(63,24): warning C4244:             T=float
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(63,24): warning C4244:         ]
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(64,24): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(64,24): warning C4244:         with
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(64,24): warning C4244:         [
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(64,24): warning C4244:             T=float
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(64,24): warning C4244:         ]
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(65,24): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(65,24): warning C4244:         with
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(65,24): warning C4244:         [
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(65,24): warning C4244:             T=float
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(65,24): warning C4244:         ]
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(71,25): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(71,25): warning C4244:         with
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(71,25): warning C4244:         [
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(71,25): warning C4244:             T=float
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(71,25): warning C4244:         ]
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(72,25): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(72,25): warning C4244:         with
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(72,25): warning C4244:         [
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(72,25): warning C4244:             T=float
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(72,25): warning C4244:         ]
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(78,24): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(78,24): warning C4244:         with
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(78,24): warning C4244:         [
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(78,24): warning C4244:             T=float
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(78,24): warning C4244:         ]
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(79,24): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(79,24): warning C4244:         with
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(79,24): warning C4244:         [
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(79,24): warning C4244:             T=float
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(79,24): warning C4244:         ]
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(80,24): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(80,24): warning C4244:         with
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(80,24): warning C4244:         [
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(80,24): warning C4244:             T=float
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(80,24): warning C4244:         ]
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(89,35): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(89,24): warning C4244: 'initializing': conversion from 'double' to 'const float', possible loss of data
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(90,27): warning C4244: 'argument': conversion from 'float' to '_Ty', possible loss of data
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(90,27): warning C4244:         with
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(90,27): warning C4244:         [
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(90,27): warning C4244:             _Ty=int
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(90,27): warning C4244:         ]
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(145,24): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(506,43): warning C4244: '-=': conversion from 'double' to 'T', possible loss of data
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(506,43): warning C4244:         with
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(506,43): warning C4244:         [
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(506,43): warning C4244:             T=float
+C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\CW2\main.cpp(506,43): warning C4244:         ]
+  CW2.vcxproj -> C:\Users\Hellomato\Desktop\AedwardsCW2\CW2\x64\Debug\CW2.exe
