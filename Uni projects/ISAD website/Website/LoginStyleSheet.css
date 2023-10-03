@@ -1,0 +1,81 @@
+﻿.layout {
+    border: dotted;
+}
+
+.nav-bar {
+    display: inline;
+}
+
+.curvy {
+    border-radius: 4px;
+}
+.middle{
+    margin:0 auto;
+}
+.inputField{
+    width:60%;
+    margin-top:50px;
+}
+
+body {
+    margin: 0px;
+}
+
+.white {
+    color: white;
+}
+
+#mainContainer {
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(39, 42, 45);
+}
+#signintitle{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size:32px;
+    margin-top:10%;
+    width:70%;
+}
+
+#loginForm{
+    height:100%;
+}
+
+#notSoMainContainer {
+    height: 90%;
+    background-color: rgb(224, 225, 226);
+}
+
+#loginContainer{
+    border:solid 1px;
+    margin:75px auto;
+    height:600px;
+    width:700px;
+    background-color:white;
+}
+
+
+#topBar {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 50px;
+    background-color: darkblue;
+    box-shadow: 2px 2px;
+}
+
+#logo {
+    width: 50px;
+    height: 50px;
+    float: left;
+}
+
+
+#extras {
+    table-layout: fixed;
+    width: 100%;
+    color: white;
+}
+
+
+
+

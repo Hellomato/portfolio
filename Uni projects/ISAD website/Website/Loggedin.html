@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="LoggedinStyleSheet.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Welcome!</title>
+</head>
+<body onload="checkLogin()">
+    <script>
+        function hideTickets() {
+            var table;
+            table = document.getElementById("ticketsTable");
+            table.hidden = true;
+            document.getElementById("infoContainer").hidden = false;
+            document.getElementById("tickets").style = "border:none;";
+            document.getElementById("details").style = "border-bottom:solid 1px darkblue;";
+        }
+
+        function hideDetails() {
+            var table;
+            table = document.getElementById("ticketsTable");
+            table.hidden = false;
+            document.getElementById("infoContainer").hidden = true;
+            document.getElementById("tickets").style = "border-bottom:solid 1px darkblue;";
+            document.getElementById("details").style = "border:none";
+        }
+
+        function checkLogin() {
+            var sessionStatus = false;
+            sesssionStatus = sessionStorage.getItem("logon");
+
+            if (sessionStatus != "true") {
+                window.location = "index.html";
+            }
+        }
+
+    </script>
+    <div id="mainContainer">
+        <div id="notSoMainContainer">
+            <div id="topBar" class="well well-sm">
+                <div id="logo"><img src="images/bus logo.png" width="50" height="50" /></div>
+                <ul class="nav-bar ">
+                    <li class="navbar-brand mb-0 h1" style="float:left; color:white;">The Coach Route</li>
+                </ul>
+                <nav class="navbar navbar-expand-md navbar-light " style="float:right;">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="Index.html" style="color:white;">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#" style="color:white;">Help <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <button type="button" class="btn btn-info" onclick="window.location='index.html'">Sign out</button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div id="dataContainer">
+                <div style="width:100%; padding:0 10px; background-color:rgb(224, 225, 226)">
+                    <div class="form-row">
+                        <div class="col-md-3" id="tickets" onclick="hideDetails()">Your Tickets</div>
+                        <div class="col-md-3" id="details" onclick="hideTickets()">Your Details</div>
+                        </div>
+                    </div>
+                <table id="ticketsTable" class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Date</th>
+                            <th scope="col">To</th>
+                            <th scope="col">From</th>
+                            <th scope="col">Price(£)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">09/01/2019</th>
+                            <th>Plymouth</th>
+                            <th>London</th>
+                            <th>10</th>
+                        </tr>
+                        <tr>
+                            <th scope="row">05/01/2019</th>
+                            <th>London</th>
+                            <th>Plymouth</th>
+                            <th>10</th>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="infoContainer" hidden>
+                    <div class="form-row">
+                        <div>First Name: <input type="text" /></div>
+                        <div class="mb-2">Last name: <input type="text" /></div>
+                    </div>
+                    <div class="form-row">
+                        <div>Address:<input type="text" /></div>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+        <div id="bottomContainer" style="max-width:1200px; margin: 0 auto;">
+            <table id="extras">
+                <tbody>
+                    <tr>
+                        <td><a class="white" href="#">Facebook</a></td>
+                        <td><a class="white" href="#">Twitter</a></td>
+                        <td><a class="white" href="#">Careers</a></td>
+                    </tr>
+                    <tr>
+                        <td><a class="white" href="#">Help</a></td>
+                        <td><a class="white" href="#">Terms and conditions</a></td>
+                        <td><a class="white" href="#">Contact Us</a></td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body>
+</html>

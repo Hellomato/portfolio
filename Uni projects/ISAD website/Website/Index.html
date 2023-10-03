@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="indexStyleSheet.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Home Page</title>
+    <script language="javascript">
+
+        var count = 1;
+
+        function PageLoad() {
+            setToday();
+            setInterval(rollAd, 5000);
+        }
+
+        function rollAd() {
+            
+            var ad = document.getElementById("scrollingAd");
+            if (count == 1) {
+                count = 2;
+                ad.src = "images/AD2.png";
+            } else if (count == 2) {
+                ad.src = "images/AD3.png";
+                count = 3;
+            } else {
+                count = 1;
+                ad.src = "images/AD1.png";
+            }
+        }
+
+        function setToday() {
+            var today = new Date();
+            var day = today.getDate();
+            var month = today.getMonth() + 1;
+            var year = today.getFullYear();
+            if (day < 10) {
+                day = '0' + day;
+            }
+            if (month < 10) {
+                month = '0' + month;
+            }
+            today = year + '-' + month + '-' + day;
+            FromDate.value = today;
+            FromDate.min = today;
+        }
+
+        function toggleReturn(on) {
+            if (on == 1) {
+                returnDate.disabled = true;
+                hoursReturn.disabled = true;
+                minutesReturn.disabled = true;
+                leaveatReturn.disabled = true;
+
+                returnCol.style = "opacity:0.4;";
+            } else {
+                returnDate.disabled = false;
+                hoursReturn.disabled = false;
+                minutesReturn.disabled = false;
+                leaveatReturn.disabled = false;
+
+                returnCol.style = ""
+            }
+        }
+        //this function was taken from the bootstrap documentation
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+</head>
+<body onload="PageLoad()">
+    <div id="mainContainer">
+        <div id="notSoMainContainer">
+            <div id="topBar" class="well well-sm">
+                <div id="logo">
+                <!-- This image is just something from google if i stole it i didnt mean it im sorry-->
+                <img src="images/bus logo.png" width="50" height="50" /></div>
+                <ul class="nav-bar ">
+                    <li class="navbar-brand mb-0 h1" style="float:left; color:white;">The Coach Route</li>
+                </ul>
+                <nav class="navbar navbar-expand-md navbar-light " style="float:right;">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="Index.html" style="color:white;">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#" style="color:white;">Help <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#" style="color:white;">Register <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <button type="button" class="btn btn-info" onclick="window.location='login.html'">Sign in</button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div id="scrollingContainer" class="curvy">
+                <form class="needs-validation" style="margin:10px;" novalidate>
+                    <div class="form-row">
+                        <div class="col-md-2" style="text-align:right;">
+                            <label for="FromLocation">From:</label>
+                        </div>
+                        <div class="col-md-0 mb-2">
+                            <input type="text" placeholder="Starting location" id="FromLocation" class="form-control curvy" required />
+                            <div class="invalid-feedback">Please Enter a starting location</div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-2" style="text-align:right;">
+                            <label for="ToLocation">To:</label>
+                        </div>
+                        <div class="col-md-0 mb-5">
+                            <input type="text" placeholder="Destination" class="form-control curvy" required />
+                            <div class="invalid-feedback">Please Enter a destination</div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="return" id="radioOneway" checked onmouseup="toggleReturn(1)" />
+                                <label class="form-check-label" for="radioOneway">One Way</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="return" id="radioReturn" onmouseup="toggleReturn(0)" />
+                                <label class="form-check-label" for="radioReturn">Return</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="return" id="radioOpenReturn" onmouseup="toggleReturn(1)" />
+                                <label class="form-check-label" for="radioOpenReturn">Open Return</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <label for="FromDate">Leaving date</label>
+                            <input type="date" id="FromDate" name="From Date" value="2019-01-01" contenteditable="false" min="2019-01-01" class="curvy">
+                            <select class="curvy">
+                                <option>Leave at</option>
+                                <option>Arrive by</option>
+                            </select>
+                            <select class="curvy">
+                                <option>00</option>
+                                <option>01</option>
+                                <option>02</option>
+                                <option>03</option>
+                                <option>04</option>
+                                <option>05</option>
+                                <option>06</option>
+                                <option>07</option>
+                                <option>08</option>
+                                <option>09</option>
+                                <option>10</option>
+                                <option>11</option>
+                                <option>12</option>
+                                <option>13</option>
+                                <option>14</option>
+                                <option>15</option>
+                                <option>16</option>
+                                <option>17</option>
+                                <option>18</option>
+                                <option>19</option>
+                                <option>20</option>
+                                <option>21</option>
+                                <option>22</option>
+                                <option>23</option>
+                            </select>
+                            <select class="curvy">
+                                <option>00</option>
+                                <option>10</option>
+                                <option>20</option>
+                                <option>30</option>
+                                <option>40</option>
+                                <option>50</option>
+                            </select>
+                        </div>
+                        <div id="returnCol" class="col-md-6" style="opacity:0.4;">
+                            <label for="FromDate">Return Date</label>
+                            <input type="date" id="returnDate" name="return Date" value="2019-01-01" contenteditable="false" min="2019-01-01" disabled class="curvy">
+                            <select id="leaveatReturn" class="curvy" disabled>
+                                <option>Leave at</option>
+                                <option>Arrive by</option>
+                            </select>
+                            <select id="hoursReturn" disabled class="curvy">
+                                <option>00</option>
+                                <option>01</option>
+                                <option>02</option>
+                                <option>03</option>
+                                <option>04</option>
+                                <option>05</option>
+                                <option>06</option>
+                                <option>07</option>
+                                <option>08</option>
+                                <option>09</option>
+                                <option>10</option>
+                                <option>11</option>
+                                <option>12</option>
+                                <option>13</option>
+                                <option>14</option>
+                                <option>15</option>
+                                <option>16</option>
+                                <option>17</option>
+                                <option>18</option>
+                                <option>19</option>
+                                <option>20</option>
+                                <option>21</option>
+                                <option>22</option>
+                                <option>23</option>
+                            </select>
+                            <select id="minutesReturn" disabled class="curvy">
+                                <option>00</option>
+                                <option>10</option>
+                                <option>20</option>
+                                <option>30</option>
+                                <option>40</option>
+                                <option>50</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn btn-info" type="submit"> Get Times</button>
+                </form>
+            </div>
+            
+        </div>
+        <div id="otherStuff" >
+            <div id="textContainer" >
+                <div id="aboutUs">ABOUT US</div>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Fames ac turpis egestas sed tempus urna et pharetra pharetra.
+                Malesuada fames ac turpis egestas maecenas pharetra convallis posuere.
+                Libero id faucibus nisl tincidunt eget nullam. Libero justo laoreet sit amet cursus.
+                Est ante in nibh mauris cursus mattis molestie a. Pellentesque habitant morbi tristique senectus.
+                Tincidunt praesent semper feugiat nibh sed. Non pulvinar neque laoreet suspendisse interdum consectetur libero id faucibus.
+                Quis blandit turpis cursus in hac habitasse platea. Non quam lacus suspendisse faucibus interdum posuere lorem.
+                In iaculis nunc sed augue lacus viverra vitae congue eu.
+            </div>
+            <div id="adlayout" >
+                <img id="scrollingAd" src="images/AD1.png" />
+                <img id="ad2" src="images/AD.png" />
+        </div>
+            </div>
+        <div id="bottomContainer" style="max-width:1200px; margin: 0 auto;">
+            <table id="extras">
+                <tbody>
+                    <tr>
+                        <td><a class="white" href="#">Facebook</a></td>
+                        <td><a class="white" href="#">Twitter</a></td>
+                        <td><a class="white" href="#">Careers</a></td>
+                    </tr>
+                    <tr>
+                        <td><a class="white" href="#">Help</a></td>
+                        <td><a class="white" href="#">Terms and conditions</a></td>
+                        <td><a class="white" href="#">Contact Us</a></td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body>
+</html>

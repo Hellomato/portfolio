@@ -1,0 +1,122 @@
+﻿.layout {
+    border:dotted;
+}
+.nav-bar{
+    display:inline;
+}
+.nobg{
+    background-color:transparent !important;
+}
+.curvy{
+    border-radius:4px;
+}
+
+body{
+    margin:0px;
+}
+.white{
+    color:white;
+}
+#mainContainer {
+    width: 100%;
+    height: 1500px;
+    background-color: rgb(39, 42, 45);
+}
+
+#notSoMainContainer {
+    height: 40%;
+    background-image: url(images/coach_bg.jpg);
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+#otherStuff{
+    height:55%;
+    width:100%;
+    background-color:white;
+}
+#textContainer {
+    height: 250px;
+    max-width:1200px;
+    margin:0 auto;
+
+}
+#aboutUs{
+    width:100%;
+    height:80px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size:26px;
+    text-align:center;
+}
+
+
+
+#topBar{
+    max-width:1200px;
+    margin:0 auto;
+    height:50px;
+    background-color:darkblue;
+    box-shadow: 2px 2px;
+}
+
+#logo{
+    width:50px;
+    height:50px;
+    float:left;
+}
+
+#loginContainer{
+    width:150px;
+    height:50px;
+    float:right;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size:22px;
+}
+
+
+#scrollingContainer {
+    width: 400px;
+    height: 500px;
+    margin: 0 20%;
+    color:white;
+    background-color:darkblue;
+    border: 1px solid;
+    border-color:black;
+    margin-top:50px;
+}
+
+
+#searchBar {
+    width: 200px;
+    float: right;
+    height: 24px;
+    margin-right: 10px;
+    border: solid;
+    border-width: 1px;
+}
+
+#extras{
+    table-layout:fixed;
+    width:100%;
+    color:white;
+}
+#adlayout{
+    width:80%;
+    height:500px;
+    margin: 0 auto;
+}
+#scrollingAd{
+    height:300px;
+    width:500px;
+    float:left;
+}
+
+#ad2 {
+        height: 450px;
+        width: 750px;
+        float: right;
+        margin-top: 50px;
+}
+@media (max-width:1000px) {
+    #ad2{display:none;}
+}

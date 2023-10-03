@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="loginStyleSheet.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Sign in</title>
+    <script>
+    //this function was taken from the bootstrap documentation
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+
+        function login() {
+            var username = document.getElementById("username");
+            var password = document.getElementById("password"); 
+
+            if (username.innerText == "user" && password.innerText == "password") {
+                sessionStorage.setItem("logon", "true");
+                window.location = "Loggedin.html";
+            } else {
+                alert("invalid password");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="mainContainer">
+        <div id="notSoMainContainer">
+            <div id="topBar" class="well well-sm">
+                <div id="logo"><img src="images/bus logo.png" width="50" height="50" /></div>
+                <ul class="nav-bar ">
+                    <li class="navbar-brand mb-0 h1" style="float:left; color:white;">The Coach Route</li>
+                </ul>
+                <nav class="navbar navbar-expand-md navbar-light " style="float:right;">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="Index.html" style="color:white;">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#" style="color:white;">Help <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#" style="color:white;">Register <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <button type="button" class="btn btn-info" onclick="window.location='login.html'">Sign in</button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div id="loginContainer" class="curvy">
+                <form id="loginForm" class="needs-validation" action="loggedin.html" novalidate>
+                    <div class="form-row">
+                        <div class="col-md-0 middle" id="signintitle"> Sign in</div>
+                        
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-0  middle inputField">
+                            <input type="text" id="username" placeholder="Username" required class="form-control curvy" style="width:100%" />
+                            <div class="invalid-feedback">Username is required</div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-0  middle inputField">
+                            <input id="password" class="form-control curvy" type="password" style="width:100%" placeholder="Password" required />
+                            <div class="invalid-feedback">Password is required</div>
+                        </div>
+                    </div>
+                    <div class="form-row"> 
+                     <div class="col-md-0 middle"><button class="btn btn-info" style="margin-top:50px;" >Sign in</button></div>
+                    </div>
+                    <div class=" form-row">
+                        <div class="col-md-0 middle"><a href="#">Dont have an account? Sign up</a></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="bottomContainer" style="max-width:1200px; margin: 0 auto;">
+            <table id="extras">
+                <tbody>
+                    <tr>
+                        <td><a class="white" href="#">Facebook</a></td>
+                        <td><a class="white" href="#">Twitter</a></td>
+                        <td><a class="white" href="#">Careers</a></td>
+                    </tr>
+                    <tr>
+                        <td><a class="white" href="#">Help</a></td>
+                        <td><a class="white" href="#">Terms and conditions</a></td>
+                        <td><a class="white" href="#">Contact Us</a></td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+   
+</body>
+</html>

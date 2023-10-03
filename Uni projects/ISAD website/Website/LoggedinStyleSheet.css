@@ -1,0 +1,84 @@
+﻿.layout {
+    border: dotted;
+}
+
+.nav-bar {
+    display: inline;
+}
+
+.curvy {
+    border-radius: 4px;
+}
+
+.middle {
+    margin: 0 auto;
+}
+
+.inputField {
+    width: 60%;
+    margin-top: 50px;
+}
+
+body {
+    margin: 0px;
+}
+
+.white {
+    color: white;
+}
+
+#mainContainer {
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(39, 42, 45);
+}
+
+
+#notSoMainContainer {
+    height: 90%;
+    background-color: rgb(224, 225, 226);
+}
+
+
+
+#topBar {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 50px;
+    background-color: darkblue;
+    box-shadow: 2px 2px;
+}
+
+#logo {
+    width: 50px;
+    height: 50px;
+    float: left;
+}
+
+
+#extras {
+    table-layout: fixed;
+    width: 100%;
+    color: white;
+}
+
+#dataContainer{
+    height:700px;
+    width:1200px;
+    background-color:white;
+    margin:0 auto;
+    margin-top:50px;
+}
+#tickets {
+    font-size: 20px;
+    text-align:center;
+    border-bottom:solid 1px darkblue;
+    background-color:white;
+}
+#details {
+    font-size: 20px;
+    border-color: darkblue;
+    text-align: center;
+    background-color: white;
+}
+
